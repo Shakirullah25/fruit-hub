@@ -70,18 +70,44 @@ class HomeScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 20, left: 50, right: 50),
             child: TextField(
-              
               showCursor: true,
               decoration: InputDecoration(
-                hintText: "",
+                hintText: MyStrings.hintTxt,
+                hintStyle: TextStyle(color: AppColors.hintTxtColor),
                 fillColor: AppColors.textFieldColor,
                 filled: true,
                 contentPadding: const EdgeInsets.symmetric(
-                  vertical: 16,
-                  horizontal: 10,
+                  vertical: 20,
+                  horizontal: 16,
                 ),
                 enabledBorder: outLineInputBorder,
                 focusedBorder: outLineInputBorder,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 40, left: 50, right: 50),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16), // match TextField
+                  ),
+                  backgroundColor: AppColors.primaryColor,
+                  foregroundColor: AppColors.buttonTxtColor,
+                  padding: EdgeInsets.symmetric(
+                    vertical: 25,
+                  ), // remove horizontal here
+                ),
+                child: Text(
+                  MyStrings.buttonTxt,
+                  style: GoogleFonts.darkerGrotesque(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
           ),
