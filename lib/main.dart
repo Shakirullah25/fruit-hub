@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/colors.dart';
 import 'package:fruit_salad_combo/home_screen.dart';
 
@@ -10,14 +11,32 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Fruit Salad Combo",
-      theme: ThemeData(
-        primaryColor: AppColors.primaryColor,
-      ),
-      home: const HomeScreen(),
-    );
-  }
+  Widget build(BuildContext context) => ScreenUtilInit(
+    designSize: Size(405, 844),
+    splitScreenMode: true,
+    minTextAdapt: true,
+    builder: (_, child) {
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "Fruit Salad Combo",
+        theme: ThemeData(
+          useMaterial3: true,
+          primaryColor: AppColors.primaryColor,
+        ),
+        home: child,
+      );
+    },
+    child: HomeScreen(),
+  );
+  // @override
+  // Widget build(BuildContext context) {
+  //   return MaterialApp(
+  //     debugShowCheckedModeBanner: false,
+  //     title: "Fruit Salad Combo",
+  //     theme: ThemeData(
+  //       primaryColor: AppColors.primaryColor,
+  //     ),
+  //     home: const HomeScreen(),
+  //   );
+  // }
 }
