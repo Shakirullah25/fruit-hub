@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/button.dart';
-import 'package:fruit_salad_combo/colors.dart';
+import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/container.dart';
-import 'package:fruit_salad_combo/my_strings.dart';
+import 'package:fruit_salad_combo/constant/my_strings.dart';
 import 'package:fruit_salad_combo/textfield.dart';
 import 'package:google_fonts/google_fonts.dart';
 

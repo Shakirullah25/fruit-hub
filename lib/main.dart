@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fruit_salad_combo/colors.dart';
+import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/home_screen.dart';
 
 void main() {

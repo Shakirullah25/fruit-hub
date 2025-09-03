@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fruit_salad_combo/colors.dart';
-import 'package:fruit_salad_combo/my_strings.dart';
+import 'package:fruit_salad_combo/constant/colors.dart';
+import 'package:fruit_salad_combo/constant/my_strings.dart';
 
 class FruitBasketContainer extends StatelessWidget {
   const FruitBasketContainer({
