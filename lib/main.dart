@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
-import 'package:fruit_salad_combo/home_screen.dart';
+import 'package:fruit_salad_combo/screens/authentication_screen.dart';
 import 'package:fruit_salad_combo/screens/splash_screen.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     builder: (_, child) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "Fruit Salad Combo",
+        title: "Fruit Hub",
         theme: ThemeData(
           useMaterial3: true,
           primaryColor: AppColors.primaryColor,

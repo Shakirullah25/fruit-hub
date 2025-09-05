@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fruit_salad_combo/button.dart';
+import 'package:fruit_salad_combo/widgets/button.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
-import 'package:fruit_salad_combo/container.dart';
+import 'package:fruit_salad_combo/widgets/container.dart';
 import 'package:fruit_salad_combo/constant/my_strings.dart';
-import 'package:fruit_salad_combo/textfield.dart';
+import 'package:fruit_salad_combo/widgets/textfield.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class AuthenticationScreen extends StatelessWidget {
+  const AuthenticationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,10 @@ class HomeScreen extends StatelessWidget {
         //appBar: AppBar(backgroundColor: AppColors.primaryColor),
         body: Column(
           children: [
-            FruitBasketContainer(),
+            FruitBasketContainer(
+              basketImgPath: MyStrings.basketImgPath,
+              shadowImgPath: MyStrings.shadowImgPath,
+            ),
             SizedBox(height: 0.05.sh),
             Padding(
               padding: EdgeInsets.only(left: 0.1.sw, bottom: 0.03.sh),
