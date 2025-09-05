@@ -4,9 +4,7 @@ import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/constant/my_strings.dart';
 
 class FruitBasketContainer extends StatelessWidget {
-  const FruitBasketContainer({
-    super.key,
-  });
+  const FruitBasketContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,29 +16,28 @@ class FruitBasketContainer extends StatelessWidget {
           topRight: Radius.circular(16).r,
         ),
         child: Container(
-          width: 375.w,
-          height: 469.h,
+          width: 1.sw,
+          height: 0.5.sh, // Takes 50% of the screen size
           color: AppColors.primaryColor,
-          child: Align(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  MyStrings.basketImgPath,
-                  width: 301.w,
-                  height: 281.21.h,
-                  // height: size.height,
-                  fit: BoxFit.contain,
-                ),
-                Image.asset(
-                  MyStrings.shadowImgPath,
-                  width: 301.w,
-                  height: 12.h,
-                  // height: size.height,
-                  fit: BoxFit.contain,
-                ),
-              ],
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Image.asset(
+                MyStrings.basketImgPath,
+                width: 0.8.sw,
+                height: 0.3.sh,
+                // height: size.height,
+                fit: BoxFit.contain,
+              ),
+              Image.asset(
+                MyStrings.shadowImgPath,
+                width: 0.8.sw,
+                height: 0.015.sh,
+                // height: size.height,
+                fit: BoxFit.contain,
+              ),
+              SizedBox(height: 20.h),
+            ],
           ),
         ),
       ),

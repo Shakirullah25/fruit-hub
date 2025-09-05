@@ -18,32 +18,32 @@ class HomeScreen extends StatelessWidget {
       borderSide: BorderSide(color: AppColors.textFieldColor),
       borderRadius: BorderRadius.all(Radius.circular(10)).r,
     );
-    return Scaffold(
-      backgroundColor: AppColors.scaffoldColor,
-      //appBar: AppBar(backgroundColor: AppColors.primaryColor),
-      body: Column(
-        children: [
-          FruitBasketContainer(),
-          Align(
-            alignment: Alignment.bottomLeft,
-            child: Padding(
-              padding: EdgeInsets.only(left: 30.w, bottom: 20.h),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.scaffoldColor,
+        //appBar: AppBar(backgroundColor: AppColors.primaryColor),
+        body: Column(
+          children: [
+            FruitBasketContainer(),
+            SizedBox(height: 0.05.sh),
+            Padding(
+              padding: EdgeInsets.only(left: 0.1.sw, bottom: 0.03.sh),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   MyStrings.firstName,
                   style: GoogleFonts.darkerGrotesque(
-                    fontSize: 20.sp,
+                    fontSize: 20.spMin,
                     fontWeight: FontWeight.bold,
                     color: AppColors.firstNameColor,
                   ),
                 ),
               ),
             ),
-          ),
-          textfield(outLineInputBorder),
-          button(),
-        ],
+            textfield(outLineInputBorder),
+            button(),
+          ],
+        ),
       ),
     );
   }
