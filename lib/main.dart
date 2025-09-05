@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/home_screen.dart';
+import 'package:fruit_salad_combo/screens/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         home: child,
       );
     },
-    child: HomeScreen(),
+    child: SplashScreen(),
   );
   // @override
   // Widget build(BuildContext context) {
