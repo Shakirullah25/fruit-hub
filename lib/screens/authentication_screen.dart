@@ -27,7 +27,7 @@ class AuthenticationScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  Text(git 
                     MyStrings.firstName,
                     style: GoogleFonts.darkerGrotesque(
                       fontSize: 20.spMin,
