@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class PrimaryButton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -28,10 +27,7 @@ class PrimaryButton extends StatelessWidget {
           ),
           child: Text(
             label,
-            style: GoogleFonts.darkerGrotesque(
-              fontSize: 16.spMin,
-              fontWeight: FontWeight.w500,
-            ),
+            style: TextStyle(fontSize: 16.spMin, fontWeight: FontWeight.w500),
           ),
         ),
       ),

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/screens/home_screen.dart';
-import 'package:fruit_salad_combo/screens/splash_screen.dart';
+import 'package:fruit_salad_combo/screens/welcome_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "Fruit Hub",
         theme: ThemeData(
+          textTheme: GoogleFonts.bricolageGrotesqueTextTheme(),
           useMaterial3: true,
           primaryColor: AppColors.primaryColor,
         ),

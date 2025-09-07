@@ -5,7 +5,6 @@ import 'package:fruit_salad_combo/constant/my_strings.dart';
 import 'package:fruit_salad_combo/screens/authentication_screen.dart';
 import 'package:fruit_salad_combo/widgets/primary_button.dart';
 import 'package:fruit_salad_combo/widgets/container.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -32,7 +31,7 @@ class WelcomeScreen extends StatelessWidget {
                 children: [
                   Text(
                     MyStrings.welcomeScreenTitleTxt,
-                    style: GoogleFonts.darkerGrotesque(
+                    style: TextStyle(
                       fontSize: 20.spMin,
                       color: AppColors.secondaryColor,
                       fontWeight: FontWeight.w500,
@@ -44,7 +43,7 @@ class WelcomeScreen extends StatelessWidget {
                     child: Text(
                       MyStrings.welcomeScreenSubtitleTxt,
                       textAlign: TextAlign.left,
-                      style: GoogleFonts.darkerGrotesque(
+                      style: TextStyle(
                         fontSize: 16.spMin,
                         color: AppColors.welcomeScreenSubtitleColor,
                         fontWeight: FontWeight.w500,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color scaffoldColor = Color(0xFFFFFFFF);
+  static const Color scaffoldColor = Color.fromARGB(255, 255, 255, 255);
   static const Color primaryColor = Color(0xFFFFA451);
   static const Color secondaryColor = Color(0xFF27214D);
   static const Color textFieldColor = Color(0xFFF3F1F1);
@@ -9,4 +9,8 @@ class AppColors {
   static const Color buttonTxtColor = Color(0xFFFFFFFF);
   static const Color welcomeScreenSubtitleColor = Color(0xFF5D577E);
   static const Color buttonColor = Color(0xFFFFFFFF);
+  static const Color addContainerColor = Color(0xFFFFF2E7);
+  static const Color quinoContainerColor = Color(0xFFFFFAEB);
+    static const Color tropicalContainerColor = Color(0xFFFEF0F0);
+
 }

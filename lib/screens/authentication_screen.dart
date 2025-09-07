@@ -5,7 +5,6 @@ import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/widgets/container.dart';
 import 'package:fruit_salad_combo/constant/my_strings.dart';
 import 'package:fruit_salad_combo/widgets/primary_textfield.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AuthenticationScreen extends StatelessWidget {
   const AuthenticationScreen({super.key});
@@ -27,18 +26,18 @@ class AuthenticationScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(git 
+                  Text(
                     MyStrings.firstName,
-                    style: GoogleFonts.darkerGrotesque(
+                    style: TextStyle(
                       fontSize: 20.spMin,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w500,
                       color: AppColors.secondaryColor,
                     ),
                   ),
                   SizedBox(height: 0.02.sh),
                   Padding(
                     padding: EdgeInsets.only(right: 0.1.sw),
-                    child: PrimaryTextField(),
+                    child: PrimaryTextField(hintText: MyStrings.authHintTxt),
                   ),
                   SizedBox(height: 0.05.sh),
                   PrimaryButton(

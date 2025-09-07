@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
-import 'package:fruit_salad_combo/constant/my_strings.dart';
 
 class PrimaryTextField extends StatelessWidget {
-  const PrimaryTextField({super.key});
+  final String? hintText;
+  final Widget? icon;
+  const PrimaryTextField({super.key, this.hintText, this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +20,16 @@ class PrimaryTextField extends StatelessWidget {
         showCursor: true,
         cursorColor: AppColors.primaryColor,
         decoration: InputDecoration(
-          hintText: MyStrings.hintTxt,
+          hintText: hintText,
           hintStyle: TextStyle(
+            //fontFamily:,
             color: AppColors.hintTxtColor,
             fontSize: 16.spMin,
           ),
+          prefixIcon: icon,
           fillColor: AppColors.textFieldColor,
           filled: true,
-          contentPadding: EdgeInsets.symmetric(
-            vertical: 16.h,
-            horizontal: 12.w,
-          ).r,
+          contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 12.w),
           enabledBorder: outLineInputBorder,
           focusedBorder: outLineInputBorder,
         ),

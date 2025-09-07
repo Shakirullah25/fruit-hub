@@ -4,13 +4,39 @@ class MyStrings {
   static const String fruitHubLogo = "lib/assets/fruit-logo.png";
   static const String fruitBinBasket = "lib/assets/fruit-bin-basket.png";
   static const String navImg = "lib/assets/nav-img.png";
-   static const String myBasketImg = "lib/assets/my-basket-img.png";
+  static const String myBasketImg = "lib/assets/my-basket-img.png";
+  static const String searchIcon = "lib/assets/search-icon.png";
+  static const String sortIcon = "lib/assets/sort-icon.png";
+  static const String honeyLimeComboImg =
+      "lib/assets/Honey-Lime-Peach-Fruit-Salad.png";
+  static const String glowingBerryImg =
+      "lib/assets/Glowing-Berry-Fruit-Salad.png";
+  static const String quinoaImg =
+      "lib/assets/breakfast-quinoa-and-red-fruit-salad.png";
+  static const String tropicalFruitImg =
+      "lib/assets/Best-Ever-Tropical-Fruit-Salad8-WIDE.png";
   static const String firstName = "What is your firstname?";
   static const String welcomeScreenTitleTxt =
       "Get The Freshest Fruit Salad Combo";
   static const String welcomeScreenSubtitleTxt =
       "We deliver the best and freshest fruit salad in\ntown. Order for a combo today!!!";
-  static const String hintTxt = "Tony";
   static const String authButtonTxt = "Start Ordering";
   static const String welcomeButtonTxt = "Let’s Continue";
+  static const String homeGreetings1 = "Hello Tony, ";
+  static const String homeGreetings2 =
+      "What fruit salad\ncombo do you want today?";
+  static const String hintTxt = "Search for fruit salad combos";
+  static const String authHintTxt = "Tony";
+  static const String recommendedComboTxt = "Recommended Combo";
+  static const String honeyLimeComboTxt = "Honey lime combo";
+  static const String glowingBerry = "Berry mango combo";
+  static const String glowingBerryPrize = "# 8,000";
+  static const String honeycomboPrize = "# 2,000";
+  static const String hottestComboPrize = "# 10,000";
+  static const String quinoFruit = "Quinoa fruit salad";
+  static const String tropicalFruit = "Tropical fruit salad";
+  static const String tab1 = "Hottest";
+  static const String tab2 = "Popular";
+  static const String tab3 = "New combo";
+  static const String tab4 = "Top";
 }
