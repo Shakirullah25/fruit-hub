@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
+import 'package:fruit_salad_combo/screens/add_to_basket_screen.dart';
 import 'package:fruit_salad_combo/screens/home_screen.dart';
 import 'package:fruit_salad_combo/screens/welcome_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         home: child,
       );
     },
-    child: HomeScreen(),
+    child: AddToBasketScreen(),
   );
   // @override
   // Widget build(BuildContext context) {
