@@ -11,6 +11,7 @@ class AppColors {
   static const Color buttonColor = Color(0xFFFFFFFF);
   static const Color addContainerColor = Color(0xFFFFF2E7);
   static const Color quinoContainerColor = Color(0xFFFFFAEB);
-    static const Color tropicalContainerColor = Color(0xFFFEF0F0);
-
+  static const Color tropicalContainerColor = Color(0xFFFEF0F0);
+  static const Color countBorderColor = Color(0xFF333333);
+  
 }

@@ -13,6 +13,8 @@ class MyStrings {
       "lib/assets/Glowing-Berry-Fruit-Salad.png";
   static const String quinoaImg =
       "lib/assets/breakfast-quinoa-and-red-fruit-salad.png";
+  static const String quinoaImg2 =
+      "lib/assets/breakfast-quinoa-and-red-fruit-salad-preview 2.png";
   static const String tropicalFruitImg =
       "lib/assets/Best-Ever-Tropical-Fruit-Salad8-WIDE.png";
   static const String firstName = "What is your firstname?";
@@ -39,4 +41,14 @@ class MyStrings {
   static const String tab2 = "Popular";
   static const String tab3 = "New combo";
   static const String tab4 = "Top";
+  static const String goBack = "Go back";
+  static const String one = "1";
+  static const String comboPrize2k = "# 2,000";
+  static const String detailsHeader = "One Pack Contains:";
+  static const String detailsInfo =
+      "Red Quinoa, Lime, Honey, Blueberries, Strawberries, Mango, Fresh mint.";
+  static const String detailsInfo2 =
+      "If you are looking for a new fruit salad to eat today, quinoa is the perfect brunch for you. make";
+  static const String add2Basket = "Add to basket";
+  static const String quinoFruitUpperCase = "Quinoa Fruit Salad";
 }

@@ -197,18 +197,7 @@ class HomeScreen extends StatelessWidget {
                                   color: AppColors.tropicalContainerColor,
                                 ),
                               ),
-                              // SizedBox(width: 0.04.sw),
-
-                              // Expanded(
-                              //   child: RecommendedComboWidget(
-                              //     comboImgPath: MyStrings.tropicalFruitImg,
-                              //     comboName: MyStrings.tropicalFruit,
-                              //     comboPrize: MyStrings.hottestComboPrize,
-                              //     onPressed: () {},
-                              //     onTap: () {},
-                              //     color: AppColors.tropicalContainerColor,
-                              //   ),
-                              // ),
+                              
                             ],
                           ),
                         ),
