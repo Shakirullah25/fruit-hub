@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "Fruit Hub",
         theme: ThemeData(
-          textTheme: GoogleFonts.bricolageGrotesqueTextTheme(),
+          textTheme: GoogleFonts.robotoTextTheme(),
           useMaterial3: true,
           primaryColor: AppColors.primaryColor,
         ),
