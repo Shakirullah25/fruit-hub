@@ -51,4 +51,8 @@ class MyStrings {
       "If you are looking for a new fruit salad to eat today, quinoa is the perfect brunch for you. make";
   static const String add2Basket = "Add to basket";
   static const String quinoFruitUpperCase = "Quinoa Fruit Salad";
+  static const String myBasket = "My Basket";
+  static const String checkOut = "Checkout";
+  static const String totalAmountTxt = "Total";
+  static const String totalAmount = "# 60,000";
 }
