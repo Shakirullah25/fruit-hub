@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
-import 'package:fruit_salad_combo/screens/order_complete.dart';
+import 'package:fruit_salad_combo/screens/track_order.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         home: child,
       );
     },
-    child: OrderComplete(),
+    child: TrackOrder(),
   );
   // @override
   // Widget build(BuildContext context) {

@@ -70,8 +70,7 @@ class MyStrings {
   static const String congrats = "Congratulations!!!";
   static const String congratsOrderMsg =
       "Your order have been taken and\nis being attended to";
-        static const String trackOrder = "Track Order";
-          static const String continueShopping = "Continue Shopping";
-
-
+  static const String trackOrder = "Track Order";
+  static const String continueShopping = "Continue Shopping";
+  static const String deliveryStatus = "Delivery Status";
 }

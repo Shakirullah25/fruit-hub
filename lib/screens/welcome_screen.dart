@@ -50,16 +50,19 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  PrimaryButton(
-                    label: MyStrings.welcomeButtonTxt,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AuthenticationScreen(),
-                        ),
-                      );
-                    },
+                  Padding(
+                    padding: EdgeInsets.only(right: 0.08.sw),
+                    child: PrimaryButton(
+                      label: MyStrings.welcomeButtonTxt,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AuthenticationScreen(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),

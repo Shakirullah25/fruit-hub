@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/constant/my_strings.dart';
+import 'package:fruit_salad_combo/screens/track_order.dart';
 import 'package:fruit_salad_combo/widgets/primary_button.dart';
 
 class OrderComplete extends StatelessWidget {
@@ -46,7 +47,7 @@ class OrderComplete extends StatelessWidget {
               SizedBox(height: 0.06.sh),
               PrimaryButton(
                 label: MyStrings.trackOrder,
-                onPressed: () {},
+                onPressed: () => TrackOrder(),
                 width: 0.4.sw,
               ),
               SizedBox(height: 0.06.sh),
