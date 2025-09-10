@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/constant/my_strings.dart';
-import 'package:fruit_salad_combo/screens/complete_details.dart';
+import 'package:fruit_salad_combo/widgets/complete_details_modal_sheet.dart';
 import 'package:fruit_salad_combo/widgets/primary_button.dart';
 
 class OrderList extends StatefulWidget {

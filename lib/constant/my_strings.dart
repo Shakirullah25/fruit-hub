@@ -1,4 +1,6 @@
 class MyStrings {
+  // ----------------- Image Paths ----------------
+
   static const String basketImgPath = "lib/assets/fruit-basket.png";
   static const String shadowImgPath = "lib/assets/shadow.png";
   static const String fruitHubLogo = "lib/assets/fruit-logo.png";
@@ -17,6 +19,10 @@ class MyStrings {
       "lib/assets/breakfast-quinoa-and-red-fruit-salad-preview 2.png";
   static const String tropicalFruitImg =
       "lib/assets/Best-Ever-Tropical-Fruit-Salad8-WIDE.png";
+  static const String orderComplete = "lib/assets/order-complete.png";
+
+  // ----------------- Texts Paths ----------------
+
   static const String firstName = "What is your firstname?";
   static const String welcomeScreenTitleTxt =
       "Get The Freshest Fruit Salad Combo";
@@ -59,8 +65,13 @@ class MyStrings {
   static const String hintDeliveryAddress = "10th avenue, Lekki, Lagos State";
   static const String no2Call = "Number we can call";
   static const String numberHint = "09043321898";
-    static const String payOnDelivery = "Pay on delivery";
-      static const String payWithCard = "Pay with card";
+  static const String payOnDelivery = "Pay on delivery";
+  static const String payWithCard = "Pay with card";
+  static const String congrats = "Congratulations!!!";
+  static const String congratsOrderMsg =
+      "Your order have been taken and\nis being attended to";
+        static const String trackOrder = "Track Order";
+          static const String continueShopping = "Continue Shopping";
 
 
 }
