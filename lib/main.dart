@@ -30,15 +30,4 @@ class MyApp extends StatelessWidget {
     },
     child: TrackOrder(),
   );
-  // @override
-  // Widget build(BuildContext context) {
-  //   return MaterialApp(
-  //     debugShowCheckedModeBanner: false,
-  //     title: "Fruit Salad Combo",
-  //     theme: ThemeData(
-  //       primaryColor: AppColors.primaryColor,
-  //     ),
-  //     home: const HomeScreen(),
-  //   );
-  // }
 }
