@@ -55,4 +55,12 @@ class MyStrings {
   static const String checkOut = "Checkout";
   static const String totalAmountTxt = "Total";
   static const String totalAmount = "# 60,000";
+  static const String deliveryAddress = "Delivery address";
+  static const String hintDeliveryAddress = "10th avenue, Lekki, Lagos State";
+  static const String no2Call = "Number we can call";
+  static const String numberHint = "09043321898";
+    static const String payOnDelivery = "Pay on delivery";
+      static const String payWithCard = "Pay with card";
+
+
 }

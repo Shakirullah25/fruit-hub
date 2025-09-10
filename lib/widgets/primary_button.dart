@@ -7,6 +7,9 @@ class PrimaryButton extends StatelessWidget {
   final String label;
   final double? height;
   final double? width;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
+  final BorderSide? borderSide;
 
   PrimaryButton({
     super.key,
@@ -14,8 +17,13 @@ class PrimaryButton extends StatelessWidget {
     required this.label,
     double? height,
     double? width,
-  }) : height = height ?? 0.065.sh, // 👈 moved here
-       width = width ?? double.infinity;
+    Color? backgroundColor,
+    Color? foregroundColor,
+    this.borderSide,
+  }) : height = height ?? 0.065.sh,
+       width = width ?? double.infinity,
+       backgroundColor = backgroundColor ?? AppColors.primaryColor,
+       foregroundColor = foregroundColor ?? AppColors.buttonTxtColor;
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +33,13 @@ class PrimaryButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
+          side: borderSide,
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10).r, // match TextField
           ),
-          backgroundColor: AppColors.primaryColor,
-          foregroundColor: AppColors.buttonTxtColor,
+          backgroundColor: backgroundColor,
+          foregroundColor: foregroundColor,
           padding: EdgeInsets.symmetric(vertical: 12.h),
         ),
         child: Text(
