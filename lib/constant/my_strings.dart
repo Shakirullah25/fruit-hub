@@ -20,6 +20,10 @@ class MyStrings {
   static const String tropicalFruitImg =
       "lib/assets/Best-Ever-Tropical-Fruit-Salad8-WIDE.png";
   static const String orderComplete = "lib/assets/order-complete.png";
+  static const String orderReceipt = "lib/assets/order-receipt.png";
+  static const String orderPrepared = "lib/assets/order-prepared.png";
+    static const String orderDelivered = "lib/assets/delivery-man-riding-red-scooter.png";
+
 
   // ----------------- Texts Paths ----------------
 

@@ -14,5 +14,5 @@ class AppColors {
   static const Color tropicalContainerColor = Color(0xFFFEF0F0);
   static const Color countBorderColor = Color(0xFF333333);
   static const Color glowingBerryColor = Color(0xFFF1EFF6);
-  
+  static const Color checkCircleColor = Colors.green;
 }

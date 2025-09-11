@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fruit_salad_combo/screens/home_screen.dart';
 import 'package:fruit_salad_combo/widgets/primary_button.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/widgets/container.dart';
@@ -45,7 +44,7 @@ class AuthenticationScreen extends StatelessWidget {
                     padding: EdgeInsets.only(right: 0.08.sw),
                     child: PrimaryButton(
                       label: MyStrings.authButtonTxt,
-                      onPressed: () => HomeScreen(),
+                      onPressed: () => AuthenticationScreen(),
                     ),
                   ),
                 ],

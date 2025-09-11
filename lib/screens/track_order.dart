@@ -1,13 +1,52 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/constant/my_strings.dart';
+import 'package:fruit_salad_combo/model/delivery_status.dart';
 
 class TrackOrder extends StatelessWidget {
-  const TrackOrder({super.key});
+  TrackOrder({super.key});
+
+  final List<Color> deliveryContainerColors = [
+    AppColors.quinoContainerColor,
+    AppColors.tropicalContainerColor,
+    AppColors.glowingBerryColor,
+  ];
 
   @override
   Widget build(BuildContext context) {
+    final List<DeliveryStatus> mockSteps = [
+      DeliveryStatus(
+        title: "Order Taken",
+        isCompleted: true,
+        icon: Image.asset(
+          MyStrings.orderReceipt,
+          width: 0.01.sw,
+          height: 0.01.sh,
+        ),
+      ),
+      DeliveryStatus(
+        title: "Order Is Being Prepared",
+        isCompleted: true,
+        icon: Image.asset(
+          MyStrings.orderPrepared,
+          width: 0.01.sw,
+          height: 0.01.sh,
+        ),
+      ),
+      DeliveryStatus(
+        title: "Order Is Being Delivered",
+        description: "Your delivery agent is coming",
+        isCompleted: false,
+        icon: Image.asset(
+          MyStrings.orderDelivered,
+          width: 0.01.sw,
+          height: 0.01.sh,
+        ),
+      ),
+    ];
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.scaffoldColor,
@@ -25,15 +64,12 @@ class TrackOrder extends StatelessWidget {
                   color: AppColors.secondaryColor,
                   size: 18.spMin,
                 ),
-                label: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    MyStrings.goBack,
-                    style: TextStyle(
-                      fontSize: 14.spMin,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.secondaryColor,
-                    ),
+                label: Text(
+                  MyStrings.goBack,
+                  style: TextStyle(
+                    fontSize: 14.spMin,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.secondaryColor,
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
@@ -57,6 +93,80 @@ class TrackOrder extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: ListView.builder(
+            itemCount: mockSteps.length,
+            itemBuilder: (context, index) {
+              final steps = mockSteps[index];
+              final colors =
+                  deliveryContainerColors[index %
+                      deliveryContainerColors.length];
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 65.w,
+                        height: 65.h,
+                        padding: EdgeInsets.all(10.w),
+                        decoration: BoxDecoration(
+                          color: colors,
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                        child: steps.icon,
+                      ),
+                      10.horizontalSpace,
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Text(
+                              steps.title,
+                              style: TextStyle(
+                                fontSize: 16.spMin,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.secondaryColor,
+                              ),
+                            ),
+                            const Spacer(),
+                            Icon(
+                              steps.isCompleted
+                                  ? Icons.check_circle
+                                  : Icons.radio_button_unchecked,
+                              color: steps.isCompleted
+                                  ? Colors.green
+                                  : AppColors.secondaryColor.withAlpha(1),
+                              size: 20.spMin,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  if (index != mockSteps.length - 1)
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: 32.5.w,
+                      ), // Adjust to center the line
+                      child: SizedBox(
+                        height: 65.h,
+                        child: DottedLine(
+                          direction: Axis.vertical,
+                          lineLength: 65.h,
+                          lineThickness: 2,
+                          dashColor: AppColors.primaryColor,
+                          dashLength: 6,
+                          dashGapLength: 4,
+                        ),
+                      ),
+                    ),
+                ],
+              );
+            },
           ),
         ),
       ),
