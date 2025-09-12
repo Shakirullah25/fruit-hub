@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/constant/my_strings.dart';
+import 'package:fruit_salad_combo/screens/track_order.dart';
 import 'package:fruit_salad_combo/widgets/primary_button.dart';
 import 'package:fruit_salad_combo/widgets/primary_textfield.dart';
 
@@ -60,7 +61,7 @@ void showCheckoutSheet(BuildContext context) {
                           label: MyStrings.payOnDelivery,
                           backgroundColor: AppColors.scaffoldColor,
                           foregroundColor: AppColors.primaryColor,
-                          onPressed: () {},
+                          onPressed: () => TrackOrder(),
                           borderSide: BorderSide(color: AppColors.primaryColor),
                         ),
                       ),

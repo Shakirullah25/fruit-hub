@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
+import 'package:fruit_salad_combo/screens/order_list.dart';
 import 'package:fruit_salad_combo/screens/track_order.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,6 +29,6 @@ class MyApp extends StatelessWidget {
         home: child,
       );
     },
-    child: TrackOrder(),
+    child: OrderList(),
   );
 }
