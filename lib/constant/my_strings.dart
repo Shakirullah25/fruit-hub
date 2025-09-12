@@ -22,8 +22,10 @@ class MyStrings {
   static const String orderComplete = "lib/assets/order-complete.png";
   static const String orderReceipt = "lib/assets/order-receipt.png";
   static const String orderPrepared = "lib/assets/order-prepared.png";
-    static const String orderDelivered = "lib/assets/delivery-man-riding-red-scooter.png";
-
+  static const String orderDelivered =
+      "lib/assets/delivery-man-riding-red-scooter.png";
+  static const String telephoneImg = "lib/assets/telephone.png";
+  static const String orderRecievedImg = "lib/assets/order-recieved.png";
 
   // ----------------- Texts Paths ----------------
 
@@ -77,4 +79,5 @@ class MyStrings {
   static const String trackOrder = "Track Order";
   static const String continueShopping = "Continue Shopping";
   static const String deliveryStatus = "Delivery Status";
+  static const String orderRecieved = "Order Received";
 }
