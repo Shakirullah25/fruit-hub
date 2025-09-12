@@ -34,14 +34,14 @@ class _TrackOrderState extends State<TrackOrder> {
       _markers.clear();
       // Show the marker only if the delivery is NOT completed.
       if (!_deliveryAgentLocation.isDelivered) {
-        final LatLng _deliveryAgentLatLng = LatLng(
+        final LatLng deliveryAgentLatLng = LatLng(
           _deliveryAgentLocation.latitude,
           _deliveryAgentLocation.longitude,
         );
         _markers.add(
           Marker(
             markerId: const MarkerId("Delivery Agent"),
-            position: _deliveryAgentLatLng,
+            position: deliveryAgentLatLng,
             infoWindow: const InfoWindow(title: "Delivery Agent Location"),
           ),
         );
