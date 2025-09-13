@@ -3,8 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/constant/my_strings.dart';
 import 'package:fruit_salad_combo/screens/track_order.dart';
+import 'package:fruit_salad_combo/widgets/pay_with_card.dart';
 import 'package:fruit_salad_combo/widgets/primary_button.dart';
 import 'package:fruit_salad_combo/widgets/primary_textfield.dart';
+
+Widget _buildTextWidget({required String title}) {
+  return Text(
+    title,
+    style: TextStyle(
+      fontSize: 20.spMin,
+      fontWeight: FontWeight.w500,
+      color: AppColors.secondaryColor,
+    ),
+  );
+}
 
 void showCheckoutSheet(BuildContext context) {
   showModalBottomSheet(
@@ -23,37 +35,22 @@ void showCheckoutSheet(BuildContext context) {
             child: Padding(
               padding: EdgeInsets.only(
                 top: 0.04.sh,
-                left: 0.08.sw,
-                right: 0.08.sw,
+                left: 0.06.sw,
+                right: 0.06.sw,
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    MyStrings.deliveryAddress,
-                    style: TextStyle(
-                      fontSize: 20.spMin,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.secondaryColor,
-                    ),
-                  ),
-                  SizedBox(height: 0.03.sh),
+                  _buildTextWidget(title: MyStrings.deliveryAddress),
+                  SizedBox(height: 0.01.sh),
                   PrimaryTextField(hintText: MyStrings.hintDeliveryAddress),
-                  //SizedBox(height: 0.03.sh),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 0.03.sh),
-                    child: Text(
-                      MyStrings.no2Call,
-                      style: TextStyle(
-                        fontSize: 20.spMin,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.secondaryColor,
-                      ),
-                    ),
+                    padding: EdgeInsets.only(bottom: 0.01.sh),
+                    child: _buildTextWidget(title: MyStrings.no2Call),
                   ),
                   PrimaryTextField(hintText: MyStrings.numberHint),
-                  SizedBox(height: 0.03.sh),
+                  SizedBox(height: 0.01.sh),
                   Row(
                     children: [
                       Expanded(
@@ -68,7 +65,7 @@ void showCheckoutSheet(BuildContext context) {
                       SizedBox(width: 0.05.sw), // space between buttons
                       Expanded(
                         child: PrimaryButton(
-                          onPressed: () {},
+                          onPressed: () => showPayWithCardSheet(context),
                           label: MyStrings
                               .payWithCard, // 👈 give this a diff label
                           backgroundColor: AppColors.scaffoldColor,

@@ -79,12 +79,14 @@ class MyStrings {
   static const String trackOrder = "Track Order";
   static const String continueShopping = "Continue Shopping";
   static const String deliveryStatus = "Delivery Status";
-  static const String cardHolderName = "Shakirullah Omotoso";
-  static const String cardNumber = "1234 5678 9012 1314";
+  static const String cardHolderHintName = "Shakirullah Omotoso";
+  static const String cardNumberHint = "1234 5678 9012 1314";
   static const String dateHint = "10/30";
   static const String ccvHint = "123";
-    static const String completeOrder = "Complete Order";
-
-
+  static const String completeOrder = "Complete Order";
   static const String orderRecieved = "Order Received";
+  static const String cardHolderName = "Card Holders Name";
+  static const String cardNumber = "Card Number";
+  static const String date = "Date";
+  static const String ccv = "CCV";
 }
