@@ -53,7 +53,7 @@ class WelcomeScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(right: 0.08.sw),
                     child: PrimaryButton(
-                      label: MyStrings.welcomeButtonTxt,
+                      label: MyStrings.letsContinue,
                       onPressed: () {
                         Navigator.push(
                           context,

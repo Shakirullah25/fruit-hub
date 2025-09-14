@@ -35,7 +35,7 @@ class MyStrings {
   static const String welcomeScreenSubtitleTxt =
       "We deliver the best and freshest fruit salad in\ntown. Order for a combo today!!!";
   static const String authButtonTxt = "Start Ordering";
-  static const String welcomeButtonTxt = "Let’s Continue";
+  static const String letsContinue = "Let’s Continue";
   static const String homeGreetings1 = "Hello Tony, ";
   static const String homeGreetings2 =
       "What fruit salad\ncombo do you want today?";

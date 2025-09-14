@@ -129,7 +129,9 @@ void showPayWithCardSheet(BuildContext context) {
             ),
             SizedBox(height: 0.01.sh),
             GestureDetector(
-              onTap: () => print("Complete Order Button Tapped"),
+              onTap: () {
+                print("Complete Order Button Tapped");
+              },
               child: SizedBox(
                 width: double.infinity,
                 height: 0.1.sh,

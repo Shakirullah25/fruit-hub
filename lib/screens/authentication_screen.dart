@@ -20,7 +20,7 @@ class AuthenticationScreen extends StatelessWidget {
               basketImgPath: MyStrings.basketImgPath,
               shadowImgPath: MyStrings.shadowImgPath,
             ),
-            SizedBox(height: 0.06.sh),
+            SizedBox(height: 0.05.sh),
             Padding(
               padding: EdgeInsets.only(left: 0.08.sw),
               child: Column(
