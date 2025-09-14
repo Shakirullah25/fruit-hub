@@ -48,11 +48,11 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
     } else {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => MainScreen()),
+        MaterialPageRoute(builder: (context) => MainScreen(userName: name)),
       );
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

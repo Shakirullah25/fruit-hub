@@ -6,10 +6,15 @@ import 'package:fruit_salad_combo/widgets/primary_textfield.dart';
 import 'package:fruit_salad_combo/widgets/recommended_combo_widget.dart';
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+  final String userName;
+  const MainScreen({super.key, required this.userName});
 
   @override
   Widget build(BuildContext context) {
+    final displayedName = userName.length > 15
+        ? '${userName.substring(0, 15)}...'
+        : userName;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.scaffoldColor,
@@ -55,9 +60,11 @@ class MainScreen extends StatelessWidget {
                         ),
                         children: [
                           TextSpan(
-                            text: MyStrings.homeGreetings1,
+                            text:
+                                '${MyStrings.homeGreetings1.replaceAll('Tony', '')}$displayedName, ',
                             style: TextStyle(fontWeight: FontWeight.w400),
                           ),
+
                           TextSpan(
                             text: MyStrings.homeGreetings2,
                             style: TextStyle(fontWeight: FontWeight.w500),
@@ -66,18 +73,22 @@ class MainScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 0.03.sh),
+                  SizedBox(height: 0.01.sh),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(
                         child: PrimaryTextField(
                           hintText: MyStrings.hintTxt,
-                          icon: Image.asset(
-                            MyStrings.searchIcon,
-                            width: 0.1.sw,
-                            height: 0.1.sh,
+                          icon: Icon(
+                            Icons.search,
+                            color: AppColors.hintTxtColor,
                           ),
+                          // icon: Image.asset(
+                          //   MyStrings.searchIcon,
+                          //   width: 0.1.sw,
+                          //   height: 0.1.sh,
+                          // ),
                         ),
                       ),
                       SizedBox(width: 0.015.sw),
@@ -92,7 +103,7 @@ class MainScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 0.04.sh),
+                  SizedBox(height: 0.015.sh),
                   Text(
                     //textAlign: TextAlign.start,
                     MyStrings.recommendedComboTxt,
@@ -197,7 +208,6 @@ class MainScreen extends StatelessWidget {
                                   color: AppColors.tropicalContainerColor,
                                 ),
                               ),
-                              
                             ],
                           ),
                         ),
