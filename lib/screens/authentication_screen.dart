@@ -46,19 +46,13 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
         _errorMessage = "Please use only letters and spaces.";
       });
     } else {
-        Navigator.push(
+      Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => MainScreen()),
       );
     }
   }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _authenticate();
-  // }
-
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -91,21 +85,9 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                       hintText: MyStrings.authHintTxt,
                       textEditingController: _firstNameController,
                       keyboardType: TextInputType.name,
+                      errorText: _errorMessage,
                     ),
                   ),
-
-                  // Displaying the error message if thats not null
-                  if (_errorMessage != null)
-                  Padding(
-                      padding: EdgeInsets.only(top: 0.01.sh, right: 0.1.sw),
-                      child: Text(
-                        _errorMessage!,
-                        style: TextStyle(
-                          color: AppColors.primaryColor,
-                          fontSize: 12.spMin,
-                        ),
-                      ),
-                    ),
                   SizedBox(height: 0.05.sh),
                   Padding(
                     padding: EdgeInsets.only(right: 0.08.sw),
