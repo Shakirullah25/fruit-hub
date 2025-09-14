@@ -5,7 +5,17 @@ import 'package:fruit_salad_combo/constant/colors.dart';
 class PrimaryTextField extends StatelessWidget {
   final String? hintText;
   final Widget? icon;
-  const PrimaryTextField({super.key, this.hintText, this.icon});
+  final TextEditingController? textEditingController;
+  final TextInputType? keyboardType;
+  final void Function(String)? onChanged;
+  const PrimaryTextField({
+    super.key,
+    this.hintText,
+    this.icon,
+    this.textEditingController,
+    this.keyboardType,
+    this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +26,9 @@ class PrimaryTextField extends StatelessWidget {
     return SizedBox(
       height: 0.08.sh,
       child: TextField(
+        onChanged: onChanged,
+        keyboardType: keyboardType,
+        controller: textEditingController,
         style: TextStyle(fontSize: 16.spMin),
         showCursor: true,
         cursorColor: AppColors.primaryColor,
