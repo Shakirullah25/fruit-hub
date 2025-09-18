@@ -15,5 +15,6 @@ class AppColors {
   static const Color countBorderColor = Color(0xFF333333);
   static const Color glowingBerryColor = Color(0xFFF1EFF6);
   static const Color checkCircleColor = Colors.green;
-    static const Color lightGreen = Color(0xFFF0FEF8);
+  static const Color lightGreen = Color(0xFFF0FEF8);
+  static const Color red = Colors.red;
 }
