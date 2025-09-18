@@ -80,7 +80,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                   ),
                   SizedBox(height: 0.02.sh),
                   Padding(
-                    padding: EdgeInsets.only(right: 0.1.sw),
+                    padding: EdgeInsets.only(right: 0.08.sw),
                     child: PrimaryTextField(
                       hintText: MyStrings.authHintTxt,
                       textEditingController: _firstNameController,
