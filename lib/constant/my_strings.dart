@@ -26,6 +26,9 @@ class MyStrings {
       "lib/assets/delivery-man-riding-red-scooter.png";
   static const String telephoneImg = "lib/assets/telephone.png";
   static const String orderRecievedImg = "lib/assets/order-recieved.png";
+  static const String emptyBasketImg = "lib/assets/empty-basket.png";
+  static const String emptyShoppingCart =
+      "lib/assets/empty-shopping-cart-removebg.png";
 
   // ----------------- Texts Paths ----------------
 
@@ -59,8 +62,12 @@ class MyStrings {
   static const String detailsHeader = "One Pack Contains:";
   static const String detailsInfo =
       "Red Quinoa, Lime, Honey, Blueberries, Strawberries, Mango, Fresh mint.";
-  static const String detailsInfo2 =
-      "If you are looking for a new fruit salad to eat today, quinoa is the perfect brunch for you. make";
+  static const String detailInfo2 =
+      "If you are looking for a new fruit salad to eat today, ";
+  // static const String detailsInfoFruitName =
+  //     "quinoa ";
+  static const String detailInfo3 =
+      " is the perfect brunch for you. make it yours...";
   static const String add2Basket = "Add to basket";
   static const String quinoFruitUpperCase = "Quinoa Fruit Salad";
   static const String myBasket = "My Basket";
@@ -89,4 +96,7 @@ class MyStrings {
   static const String cardNumber = "Card Number";
   static const String date = "Date";
   static const String ccv = "CCV";
+  static const String emptyBasketTxt =
+      "Oops! There's nothing in your basket!";
+  static const String startShopping = "Start Shopping";
 }
