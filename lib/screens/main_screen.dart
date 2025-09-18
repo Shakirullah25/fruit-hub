@@ -2,18 +2,48 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/constant/my_strings.dart';
+import 'package:fruit_salad_combo/data/combo_data.dart';
+import 'package:fruit_salad_combo/model/combo_details.dart';
+import 'package:fruit_salad_combo/screens/add_to_basket_screen.dart';
+import 'package:fruit_salad_combo/screens/order_list.dart';
+import 'package:fruit_salad_combo/services/basket_service.dart';
 import 'package:fruit_salad_combo/widgets/primary_textfield.dart';
 import 'package:fruit_salad_combo/widgets/recommended_combo_widget.dart';
+import 'package:badges/badges.dart' as badges;
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   final String userName;
   const MainScreen({super.key, required this.userName});
 
   @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  late List<ComboDetails> recommendedCombos;
+  late List<ComboDetails> hottestCombos;
+
+  @override
+  void initState() {
+    super.initState();
+    recommendedCombos = ComboData.getRecommendedCombos();
+    hottestCombos = ComboData.getHottestCombos();
+  }
+
+  void _navigateToAddToBasket(ComboDetails combo) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AddToBasketScreen(comboDetails: combo),
+      ),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final displayedName = userName.length > 15
-        ? '${userName.substring(0, 15)}...'
-        : userName;
+    final displayedName = widget.userName.length > 15
+        ? '${widget.userName.substring(0, 15)}...'
+        : widget.userName;
 
     return SafeArea(
       child: Scaffold(
@@ -31,14 +61,44 @@ class MainScreen extends StatelessWidget {
             ),
           ),
           actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Image.asset(
-                MyStrings.myBasketImg,
-                width: 0.1.sw,
-                height: 0.1.sh,
-                //fit: BoxFit.contain,
-              ),
+            ValueListenableBuilder<int>(
+              valueListenable: BasketService.itemCount,
+              builder: (context, count, child) {
+                return IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OrderList(),
+                      ),
+                    );
+                  },
+                  icon: badges.Badge(
+                    showBadge: true,
+                    position: badges.BadgePosition.topEnd(top: 0, end: 0),
+                    badgeStyle: badges.BadgeStyle(
+                      badgeColor: AppColors.red,
+                      padding: EdgeInsets.all(6),
+                    ),
+                    // If there are items, show count. If not, show a small dot
+                    badgeContent: count > 0
+                        ? Text(
+                            count.toString(),
+                            style: TextStyle(
+                              color: AppColors.scaffoldColor,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        : null,
+                    child: Image.asset(
+                      MyStrings.myBasketImg,
+                      width: 0.1.sw,
+                      height: 0.1.sh,
+                    ),
+                  ),
+                );
+              },
             ),
           ],
         ),
@@ -118,21 +178,21 @@ class MainScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: RecommendedComboWidget(
-                          comboImgPath: MyStrings.honeyLimeComboImg,
-                          comboName: MyStrings.honeyLimeComboTxt,
-                          comboPrize: MyStrings.honeycomboPrize,
+                          comboImgPath: recommendedCombos[0].imgPath,
+                          comboName: recommendedCombos[0].fruitName,
+                          comboPrize: recommendedCombos[0].fruitPrice,
                           onPressed: () {},
-                          onTap: () {},
+                          onTap: () => _navigateToAddToBasket(recommendedCombos[0]),
                         ),
                       ),
                       SizedBox(width: 0.04.sw),
                       Expanded(
                         child: RecommendedComboWidget(
-                          comboImgPath: MyStrings.glowingBerryImg,
-                          comboName: MyStrings.glowingBerry,
-                          comboPrize: MyStrings.glowingBerryPrize,
+                          comboImgPath: recommendedCombos[1].imgPath,
+                          comboName: recommendedCombos[1].fruitName,
+                          comboPrize: recommendedCombos[1].fruitPrice,
                           onPressed: () {},
-                          onTap: () {},
+                          onTap: () => _navigateToAddToBasket(recommendedCombos[1]),
                         ),
                       ),
                     ],
@@ -189,22 +249,22 @@ class MainScreen extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: RecommendedComboWidget(
-                                  comboImgPath: MyStrings.quinoaImg,
-                                  comboName: MyStrings.quinoFruit,
-                                  comboPrize: MyStrings.hottestComboPrize,
+                                  comboImgPath: hottestCombos[0].imgPath,
+                                  comboName: hottestCombos[0].fruitName,
+                                  comboPrize: hottestCombos[0].fruitPrice,
                                   onPressed: () {},
-                                  onTap: () {},
+                                  onTap: () => _navigateToAddToBasket(hottestCombos[0]),
                                   color: AppColors.quinoContainerColor,
                                 ),
                               ),
                               SizedBox(width: 0.04.sw),
                               Expanded(
                                 child: RecommendedComboWidget(
-                                  comboImgPath: MyStrings.tropicalFruitImg,
-                                  comboName: MyStrings.tropicalFruit,
-                                  comboPrize: MyStrings.hottestComboPrize,
+                                  comboImgPath: hottestCombos[1].imgPath,
+                                  comboName: hottestCombos[1].fruitName,
+                                  comboPrize: hottestCombos[1].fruitPrice,
                                   onPressed: () {},
-                                  onTap: () {},
+                                  onTap: () => _navigateToAddToBasket(hottestCombos[1]),
                                   color: AppColors.tropicalContainerColor,
                                 ),
                               ),
@@ -226,3 +286,235 @@ class MainScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
+// import 'package:flutter/material.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:fruit_salad_combo/constant/colors.dart';
+// import 'package:fruit_salad_combo/constant/my_strings.dart';
+// import 'package:fruit_salad_combo/widgets/primary_textfield.dart';
+// import 'package:fruit_salad_combo/widgets/recommended_combo_widget.dart';
+
+// class MainScreen extends StatelessWidget {
+//   final String userName;
+//   const MainScreen({super.key, required this.userName});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final displayedName = userName.length > 15
+//         ? '${userName.substring(0, 15)}...'
+//         : userName;
+
+//     return SafeArea(
+//       child: Scaffold(
+//         backgroundColor: AppColors.scaffoldColor,
+//         appBar: AppBar(
+//           backgroundColor: AppColors.scaffoldColor,
+//           foregroundColor: AppColors.primaryColor,
+//           leading: IconButton(
+//             onPressed: () {},
+//             icon: Image.asset(
+//               MyStrings.navImg,
+//               width: 0.1.sw,
+//               height: 0.1.sh,
+//               //fit: BoxFit.contain,
+//             ),
+//           ),
+//           actions: [
+//             IconButton(
+//               onPressed: () {},
+//               icon: Image.asset(
+//                 MyStrings.myBasketImg,
+//                 width: 0.1.sw,
+//                 height: 0.1.sh,
+//                 //fit: BoxFit.contain,
+//               ),
+//             ),
+//           ],
+//         ),
+//         body: DefaultTabController(
+//           length: 4,
+//           child: SingleChildScrollView(
+//             child: Padding(
+//               padding: const EdgeInsets.all(16.0),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Align(
+//                     alignment: Alignment.topLeft,
+//                     child: RichText(
+//                       text: TextSpan(
+//                         style: TextStyle(
+//                           fontSize: 20.spMin,
+//                           color: AppColors.secondaryColor,
+//                         ),
+//                         children: [
+//                           TextSpan(
+//                             text:
+//                                 '${MyStrings.homeGreetings1.replaceAll('Tony', '')}$displayedName, ',
+//                             style: TextStyle(fontWeight: FontWeight.w400),
+//                           ),
+
+//                           TextSpan(
+//                             text: MyStrings.homeGreetings2,
+//                             style: TextStyle(fontWeight: FontWeight.w500),
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   ),
+//                   SizedBox(height: 0.01.sh),
+//                   Row(
+//                     crossAxisAlignment: CrossAxisAlignment.center,
+//                     children: [
+//                       Expanded(
+//                         child: PrimaryTextField(
+//                           hintText: MyStrings.hintTxt,
+//                           icon: Icon(
+//                             Icons.search,
+//                             color: AppColors.hintTxtColor,
+//                           ),
+//                           // icon: Image.asset(
+//                           //   MyStrings.searchIcon,
+//                           //   width: 0.1.sw,
+//                           //   height: 0.1.sh,
+//                           // ),
+//                         ),
+//                       ),
+//                       SizedBox(width: 0.015.sw),
+//                       SizedBox(
+//                         height: 0.1.sh, // 👈 match TextField height
+//                         width: 0.1.sw,
+//                         child: IconButton(
+//                           padding: EdgeInsets.zero,
+//                           onPressed: () {},
+//                           icon: Image.asset(MyStrings.sortIcon),
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                   SizedBox(height: 0.015.sh),
+//                   Text(
+//                     //textAlign: TextAlign.start,
+//                     MyStrings.recommendedComboTxt,
+//                     style: TextStyle(
+//                       fontSize: 24.spMax,
+//                       color: AppColors.secondaryColor,
+//                       fontWeight: FontWeight.w500,
+//                     ),
+//                   ),
+//                   SizedBox(height: 0.04.sh),
+//                   Row(
+//                     children: [
+//                       Expanded(
+//                         child: RecommendedComboWidget(
+//                           comboImgPath: MyStrings.honeyLimeComboImg,
+//                           comboName: MyStrings.honeyLimeComboTxt,
+//                           comboPrize: MyStrings.honeycomboPrize,
+//                           onPressed: () {},
+//                           onTap: () {},
+//                         ),
+//                       ),
+//                       SizedBox(width: 0.04.sw),
+//                       Expanded(
+//                         child: RecommendedComboWidget(
+//                           comboImgPath: MyStrings.glowingBerryImg,
+//                           comboName: MyStrings.glowingBerry,
+//                           comboPrize: MyStrings.glowingBerryPrize,
+//                           onPressed: () {},
+//                           onTap: () {},
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                   SizedBox(height: 0.04.sh),
+
+//                   // TAB BAR
+//                   TabBar(
+//                     indicator: UnderlineTabIndicator(
+//                       borderSide: BorderSide(
+//                         width: 3.0,
+//                         color: AppColors.primaryColor,
+//                       ),
+//                       insets: EdgeInsets.symmetric(
+//                         horizontal: 25.0,
+//                       ), // 👈 shrink indicator
+//                     ),
+//                     tabAlignment: TabAlignment.start,
+//                     dividerHeight: 0,
+//                     indicatorSize: TabBarIndicatorSize.label,
+//                     labelColor: AppColors.secondaryColor,
+//                     labelStyle: TextStyle(
+//                       fontSize: 24.spMin,
+//                       fontWeight: FontWeight.w500,
+//                     ),
+//                     indicatorColor: AppColors.primaryColor,
+//                     unselectedLabelColor: AppColors.hintTxtColor,
+//                     unselectedLabelStyle: TextStyle(
+//                       fontSize: 16.spMin,
+//                       fontWeight: FontWeight.w500,
+//                     ),
+//                     isScrollable: true,
+//                     tabs: [
+//                       Tab(text: MyStrings.tab1),
+//                       Tab(text: MyStrings.tab2),
+//                       Tab(text: MyStrings.tab3),
+//                       Tab(text: MyStrings.tab4),
+//                     ],
+//                   ),
+
+//                   // TABBARVIEW with fixed height instead of Expanded
+//                   SizedBox(
+//                     height: 0.3.sh, // Fixed height for TabBarView content
+//                     child: TabBarView(
+//                       children: [
+//                         Padding(
+//                           padding: const EdgeInsets.only(
+//                             left: 16.0,
+//                             right: 16,
+//                             top: 16,
+//                             bottom: 16,
+//                           ),
+//                           child: Row(
+//                             children: [
+//                               Expanded(
+//                                 child: RecommendedComboWidget(
+//                                   comboImgPath: MyStrings.quinoaImg,
+//                                   comboName: MyStrings.quinoFruit,
+//                                   comboPrize: MyStrings.hottestComboPrize,
+//                                   onPressed: () {},
+//                                   onTap: () {},
+//                                   color: AppColors.quinoContainerColor,
+//                                 ),
+//                               ),
+//                               SizedBox(width: 0.04.sw),
+//                               Expanded(
+//                                 child: RecommendedComboWidget(
+//                                   comboImgPath: MyStrings.tropicalFruitImg,
+//                                   comboName: MyStrings.tropicalFruit,
+//                                   comboPrize: MyStrings.hottestComboPrize,
+//                                   onPressed: () {},
+//                                   onTap: () {},
+//                                   color: AppColors.tropicalContainerColor,
+//                                 ),
+//                               ),
+//                             ],
+//                           ),
+//                         ),
+//                         Center(child: Text("Tab 2 content")),
+//                         Center(child: Text("Tab 3 content")),
+//                         Center(child: Text("Tab 4 content")),
+//                       ],
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
