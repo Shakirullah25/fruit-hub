@@ -39,6 +39,7 @@ class RecommendedComboWidget extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(8.w),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Align(
@@ -66,7 +67,7 @@ class RecommendedComboWidget extends StatelessWidget {
             Text(
               comboName,
               style: TextStyle(
-                fontSize: 16.spMin,
+                fontSize: 14.spMin,
                 color: AppColors.secondaryColor,
                 fontWeight: FontWeight.w500,
               ),
