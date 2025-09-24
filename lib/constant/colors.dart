@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  AppColors._();
+
   static const Color scaffoldColor = Color.fromARGB(255, 255, 255, 255);
   static const Color primaryColor = Color(0xFFFFA451);
   static const Color secondaryColor = Color(0xFF27214D);
@@ -17,4 +19,5 @@ class AppColors {
   static const Color checkCircleColor = Colors.green;
   static const Color lightGreen = Color(0xFFF0FEF8);
   static const Color red = Colors.red;
+  static const Color tabComboColor = Color(0xFFF1EFF6);
 }
