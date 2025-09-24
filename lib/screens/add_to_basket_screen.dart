@@ -5,6 +5,7 @@ import 'package:fruit_salad_combo/constant/my_strings.dart';
 import 'package:fruit_salad_combo/model/combo_details.dart';
 import 'package:fruit_salad_combo/screens/order_list.dart';
 import 'package:fruit_salad_combo/services/basket_service.dart';
+import 'package:fruit_salad_combo/services/wishlist_service.dart';
 import 'package:fruit_salad_combo/widgets/container.dart';
 import 'package:fruit_salad_combo/widgets/primary_button.dart';
 
@@ -18,6 +19,16 @@ class AddToBasketScreen extends StatefulWidget {
 
 class _AddToBasketScreenState extends State<AddToBasketScreen> {
   int quantity = 1;
+  bool _isInWishlist = false;
+  //bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _isInWishlist = WishlistService.isInWishlist(
+      "${widget.comboDetails.imgPath}_${widget.comboDetails.fruitName}",
+    );
+  }
 
   void _incrementQuantity() {
     setState(() {
@@ -35,7 +46,10 @@ class _AddToBasketScreenState extends State<AddToBasketScreen> {
 
   double _getBasePrice() {
     // Parse the fruitPrice string to double, removing any currency symbols
-    String priceStr = widget.comboDetails.fruitPrice.replaceAll(RegExp(r'[^\d.]'), '');
+    String priceStr = widget.comboDetails.fruitPrice.replaceAll(
+      RegExp(r'[^\d.]'),
+      '',
+    );
     return double.tryParse(priceStr) ?? 0.0;
   }
 
@@ -47,21 +61,55 @@ class _AddToBasketScreenState extends State<AddToBasketScreen> {
     return '# ${price.toStringAsFixed(2)}';
   }
 
+  void _toggleWishlist() {
+    final comboId =
+        "${widget.comboDetails.imgPath}_${widget.comboDetails.fruitName}";
+    if (_isInWishlist) {
+      WishlistService.removeItem(comboId);
+      setState(() {
+        _isInWishlist = false;
+      });
+    } else {
+      final wishlistItem = WishlistItem(
+        img: widget.comboDetails.imgPath,
+        fruitName: widget.comboDetails.fruitName,
+        fruitQty: "1 Pack", // Default quantity for wishlist
+        fruitPrize: widget.comboDetails.fruitPrice,
+        comboId: comboId,
+      );
+      bool added = WishlistService.addItem(wishlistItem);
+      if (added) {
+        setState(() {
+          _isInWishlist = true;
+        });
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              '${widget.comboDetails.fruitName} is already in wishlist',
+            ),
+            duration: const Duration(seconds: 2),
+          ),
+        );
+      }
+    }
+  }
+
   void _addToBasket() {
     final basketItem = BasketItem(
       img: widget.comboDetails.imgPath,
       fruitName: widget.comboDetails.fruitName,
       fruitQty: "$quantity Pack${quantity > 1 ? 's' : ''}",
       fruitPrize: _formatPrice(_getTotalPrice()),
-      comboId: "${widget.comboDetails.imgPath}_${widget.comboDetails.fruitName}", // Using imgPath + fruitName as unique identifier
+      comboId:
+          "${widget.comboDetails.imgPath}_${widget.comboDetails.fruitName}", // Using imgPath + fruitName as unique identifier
     );
 
     BasketService.addItem(basketItem);
-
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const OrderList(),
+        builder: (context) => const OrderList(fromAddToBasket: true),
       ),
     );
   }
@@ -85,29 +133,11 @@ class _AddToBasketScreenState extends State<AddToBasketScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: ElevatedButton.icon(
+                      child: IconButton(
                         onPressed: () => Navigator.pop(context),
                         icon: Icon(
-                          Icons.arrow_back_ios,
-                          color: AppColors.secondaryColor,
-                        ),
-                        label: Text(
-                          MyStrings.goBack,
-                          style: TextStyle(
-                            fontSize: 16.spMin,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.secondaryColor,
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.scaffoldColor,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 8.w, // reduced spacing
-                            vertical: 8.h,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25.r),
-                          ),
+                          Icons.arrow_back,
+                          color: AppColors.scaffoldColor,
                         ),
                       ),
                     ),
@@ -277,23 +307,18 @@ class _AddToBasketScreenState extends State<AddToBasketScreen> {
                         child: RichText(
                           text: TextSpan(
                             style: TextStyle(
-                            fontSize: 14.spMin,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.secondaryColor,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: MyStrings.detailInfo2,
-                              
+                              fontSize: 14.spMin,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.secondaryColor,
                             ),
-                            TextSpan(
-                              text: widget.comboDetails.shortName,
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            TextSpan(
-                              text: MyStrings.detailInfo3,
-                            ),
-                          ],
+                            children: [
+                              TextSpan(text: MyStrings.detailInfo2),
+                              TextSpan(
+                                text: widget.comboDetails.shortName,
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              TextSpan(text: MyStrings.detailInfo3),
+                            ],
                           ),
                         ),
                         // child: Text(
@@ -317,7 +342,7 @@ class _AddToBasketScreenState extends State<AddToBasketScreen> {
                           //crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             InkWell(
-                              onTap: () {},
+                              onTap: _toggleWishlist,
                               child: Container(
                                 alignment: Alignment.center,
                                 width: 48.w,
@@ -327,7 +352,9 @@ class _AddToBasketScreenState extends State<AddToBasketScreen> {
                                   color: AppColors.addContainerColor,
                                 ),
                                 child: Icon(
-                                  Icons.favorite_outline,
+                                  _isInWishlist
+                                      ? Icons.favorite
+                                      : Icons.favorite_outline,
                                   size: 24.spMin,
                                   color: AppColors.primaryColor,
                                 ),
@@ -353,12 +380,6 @@ class _AddToBasketScreenState extends State<AddToBasketScreen> {
     );
   }
 }
-
-
-
-
-
-
 
 // import 'package:flutter/material.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
