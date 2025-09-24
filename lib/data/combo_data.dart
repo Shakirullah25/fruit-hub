@@ -18,6 +18,20 @@ class ComboData {
         description: MyStrings.detailsInfo,
         shortName: MyStrings.glowingBerry,
       ),
+      ComboDetails(
+        imgPath: MyStrings.berryBlastImg,
+        fruitName: MyStrings.berryBlastcombo,
+        fruitPrice: MyStrings.berryBlastcomboPrice,
+        description: MyStrings.detailsInfo,
+        shortName: MyStrings.berryBlastcombo,
+      ),
+      ComboDetails(
+        imgPath: MyStrings.citrusSplashImg,
+        fruitName: MyStrings.citrusSplash,
+        fruitPrice: MyStrings.citrusSplashPrice,
+        description: MyStrings.detailsInfo,
+        shortName: MyStrings.citrusSplash,
+      ),
     ];
   }
 
@@ -37,44 +51,69 @@ class ComboData {
         description: MyStrings.detailsInfo,
         shortName: MyStrings.tropicalFruit,
       ),
+      ComboDetails(
+        imgPath: MyStrings.summerBreezeImg,
+        fruitName: MyStrings.summerBreeze,
+        fruitPrice: MyStrings.summerBreezePrice,
+        description: MyStrings.detailsInfo,
+        shortName: MyStrings.summerBreeze,
+      ),
     ];
   }
 
   static List<ComboDetails> getPopularCombos() {
     return [
-      // Add popular combos data here
       ComboDetails(
-        imgPath: MyStrings.quinoaImg,
-        fruitName: MyStrings.quinoFruit,
-        fruitPrice: MyStrings.hottestComboPrize,
+        imgPath: MyStrings.carribeanMixImg,
+        fruitName: MyStrings.carribeanMix,
+        fruitPrice: MyStrings.carribeanMixPrice,
         description: MyStrings.detailsInfo,
-        shortName: MyStrings.quinoFruitUpperCase,
+        shortName: MyStrings.carribeanMix,
+      ),
+      ComboDetails(
+        imgPath: MyStrings.sweetSymphonyImg,
+        fruitName: MyStrings.sweetSymphony,
+        fruitPrice: MyStrings.sweetSymphonyPrice,
+        description: MyStrings.detailsInfo,
+        shortName: MyStrings.sweetSymphony,
       ),
     ];
   }
 
   static List<ComboDetails> getNewCombos() {
     return [
-      // Add new combos data here
       ComboDetails(
-        imgPath: MyStrings.tropicalFruitImg,
-        fruitName: MyStrings.tropicalFruit,
-        fruitPrice: MyStrings.hottestComboPrize,
+        imgPath: MyStrings.tropicalQuinoaDelightImg,
+        fruitName: MyStrings.tropicalQuinoaDelight,
+        fruitPrice: MyStrings.tropicalQuinoaDelightPrice,
         description: MyStrings.detailsInfo,
-        shortName: MyStrings.tropicalFruit,
+        shortName: MyStrings.tropicalQuinoaDelight,
+      ),
+      ComboDetails(
+        imgPath: MyStrings.berryBlastImg,
+        fruitName: MyStrings.berryBlastcombo,
+        fruitPrice: MyStrings.berryBlastcomboPrice,
+        description: MyStrings.detailsInfo,
+        shortName: MyStrings.berryBlastcombo,
       ),
     ];
   }
 
   static List<ComboDetails> getTopCombos() {
     return [
-      // Add top combos data here
       ComboDetails(
-        imgPath: MyStrings.glowingBerryImg,
-        fruitName: MyStrings.glowingBerry,
-        fruitPrice: MyStrings.glowingBerryPrize,
+        imgPath: MyStrings.citrusSplashImg,
+        fruitName: MyStrings.citrusSplash,
+        fruitPrice: MyStrings.citrusSplashPrice,
         description: MyStrings.detailsInfo,
-        shortName: MyStrings.glowingBerry,
+        shortName: MyStrings.citrusSplash,
+      ),
+      ComboDetails(
+        imgPath: MyStrings.summerBreezeImg,
+        fruitName: MyStrings.summerBreeze,
+        fruitPrice: MyStrings.summerBreezePrice,
+        description: MyStrings.detailsInfo,
+        shortName: MyStrings.summerBreeze,
       ),
     ];
   }
