@@ -43,14 +43,13 @@ void showCheckoutSheet(BuildContext context) {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildTextWidget(title: MyStrings.deliveryAddress),
-                  SizedBox(height: 0.01.sh),
+                  15.verticalSpace,
                   PrimaryTextField(hintText: MyStrings.hintDeliveryAddress),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 0.01.sh),
-                    child: _buildTextWidget(title: MyStrings.no2Call),
-                  ),
+                  15.verticalSpace,
+                  _buildTextWidget(title: MyStrings.no2Call),
+                  15.verticalSpace,
                   PrimaryTextField(hintText: MyStrings.numberHint),
-                  SizedBox(height: 0.01.sh),
+                  25.verticalSpace,
                   Row(
                     children: [
                       Expanded(
@@ -80,7 +79,6 @@ void showCheckoutSheet(BuildContext context) {
               ),
             ),
           ),
-
           // -----> Top Close Icon in a Stack Widget <-----
           Positioned(
             top: -0.07.sh, // negative to make it float outside sheet
