@@ -1,4 +1,5 @@
 class MyStrings {
+  MyStrings._();
   // ----------------- Image Paths ----------------
 
   static const String basketImgPath = "lib/assets/fruit-basket.png";
@@ -22,15 +23,37 @@ class MyStrings {
   static const String orderComplete = "lib/assets/order-complete.png";
   static const String orderReceipt = "lib/assets/order-receipt.png";
   static const String orderPrepared = "lib/assets/order-prepared.png";
-  static const String orderDelivered =
+  static const String orderDelivered = 
       "lib/assets/delivery-man-riding-red-scooter.png";
   static const String telephoneImg = "lib/assets/telephone.png";
   static const String orderRecievedImg = "lib/assets/order-recieved.png";
   static const String emptyBasketImg = "lib/assets/empty-basket.png";
   static const String emptyShoppingCart =
       "lib/assets/empty-shopping-cart-removebg.png";
+  static const String berryBlastImg = "lib/assets/Berry-blast.png";
+  static const String carribeanMixImg = "lib/assets/carribean-mix.png";
+  static const String citrusSplashImg =
+      "lib/assets/citrus-splash-fruit-salad(2).png";
+  static const String summerBreezeImg =
+      "lib/assets/summer-breeze- fruit-salad.png";
+  static const String sweetSymphonyImg = "lib/assets/sweet-symphony(2).png";
+  static const String tropicalQuinoaDelightImg =
+      "lib/assets/Tropical-Quinoa-Delight.png";
 
   // ----------------- Texts Paths ----------------
+
+  static const String berryBlastcombo = "Berry Blast Combo";
+  static const String citrusSplash = "Citrus Spash";
+  static const String carribeanMix = "Carribean Mix Salad";
+  static const String summerBreeze = "Summer Breeze Salad";
+  static const String sweetSymphony = "Sweet Symphony Salad";
+  static const String tropicalQuinoaDelight = "Tropical Quinoa Delight";
+  static const String berryBlastcomboPrice = "# 7000";
+  static const String citrusSplashPrice = "# 9000";
+  static const String carribeanMixPrice = "# 8000";
+  static const String summerBreezePrice = "# 6000";
+  static const String sweetSymphonyPrice = "# 5000";
+  static const String tropicalQuinoaDelightPrice = "# 5000";
 
   static const String firstName = "What is your firstname?";
   static const String welcomeScreenTitleTxt =
@@ -70,7 +93,7 @@ class MyStrings {
       " is the perfect brunch for you. make it yours...";
   static const String add2Basket = "Add to basket";
   static const String quinoFruitUpperCase = "Quinoa Fruit Salad";
-  static const String myBasket = "My Basket";
+  static const String myBasket = "Basket";
   static const String checkOut = "Checkout";
   static const String totalAmountTxt = "Total";
   static const String totalAmount = "# 60,000";
@@ -96,7 +119,11 @@ class MyStrings {
   static const String cardNumber = "Card Number";
   static const String date = "Date";
   static const String ccv = "CCV";
-  static const String emptyBasketTxt =
-      "Oops! There's nothing in your basket!";
+  static const String emptyBasketTxt = "Oops! There's nothing in your basket!";
   static const String startShopping = "Start Shopping";
-}
+  static const String myWishList = "Wishlist";
+  static const String sortByNameAZ = "Name A-Z";
+  static const String sortByNameZA = "Name Z-A";
+  static const String sortByPriceLowHigh = "Price Low-High";
+  static const String sortByPriceHighLow = "Price High-Low";
+ }
