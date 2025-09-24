@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/constant/my_strings.dart';
@@ -6,8 +7,27 @@ import 'package:fruit_salad_combo/screens/authentication_screen.dart';
 import 'package:fruit_salad_combo/widgets/primary_button.dart';
 import 'package:fruit_salad_combo/widgets/container.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
+
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  void _navigateToAuth() {
+    EasyLoading.show(status: "Loading...");
+
+    Future.delayed(const Duration(seconds: 1), () {
+      EasyLoading.dismiss();
+      if (mounted) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const AuthenticationScreen()),
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,15 +73,9 @@ class WelcomeScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(right: 0.08.sw),
                     child: PrimaryButton(
+                      key: const Key(MyStrings.letsContinue),
                       label: MyStrings.letsContinue,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const AuthenticationScreen(),
-                          ),
-                        );
-                      },
+                      onPressed: () => _navigateToAuth(),
                     ),
                   ),
                 ],
