@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fruit_salad_combo/config_loading.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
-import 'package:fruit_salad_combo/screens/main_screen.dart';
 import 'package:fruit_salad_combo/screens/splash_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
+  configLoading();
 }
 
 class MyApp extends StatelessWidget {
@@ -19,12 +21,13 @@ class MyApp extends StatelessWidget {
     minTextAdapt: true,
     builder: (_, child) {
       return MaterialApp(
+        builder: EasyLoading.init(),
         debugShowCheckedModeBanner: false,
         title: "Fruit Hub",
         theme: ThemeData(
-          textTheme: GoogleFonts.robotoTextTheme(),
+          textTheme: GoogleFonts.poppinsTextTheme(),
           useMaterial3: true,
-          primaryColor: AppColors.primaryColor,
+          primaryColor: AppColors.primaryColor
         ),
         home: child,
       );
