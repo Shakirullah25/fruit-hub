@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/screens/main_screen.dart';
+import 'package:fruit_salad_combo/utils/validators.dart';
 import 'package:fruit_salad_combo/widgets/primary_button.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/widgets/container.dart';
@@ -20,38 +22,42 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
 
   @override
   void dispose() {
-    _firstNameController;
+    _firstNameController.dispose();
     super.dispose();
   }
+
+  
 
   void _authenticate() {
     final String name = _firstNameController.text.trim();
 
     // Reset error message
+    final String? validationError = validateName(name);
+    if (validationError != null) {
+      setState(() {
+        _errorMessage = validationError;
+      });
+      return;
+    } 
+      // valid → proceed with loading and navigation
+      
+      EasyLoading.show(status: 'Loading...');
 
-    setState(() {
-      _errorMessage = null;
-    });
-
-    if (name.isEmpty) {
-      setState(() {
-        _errorMessage = "Name cannot be empty.";
+      Future.delayed(const Duration(seconds: 3), () {
+        EasyLoading.dismiss();
+        if (mounted) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MainScreen(userName: name)),
+          );
+        }
       });
-    } else if (name.length > 25) {
-      setState(() {
-        _errorMessage = "Name is too long.";
-      });
-    } else if (!RegExp(r"^[a-zA-Z\s]+$").hasMatch(name)) {
-      setState(() {
-        _errorMessage = "Please use only letters and spaces.";
-      });
-    } else {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => MainScreen(userName: name)),
-      );
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => MainScreen(userName: name)),
+      // );
     }
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +100,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                     child: PrimaryButton(
                       label: MyStrings.authButtonTxt,
                       onPressed: () => _authenticate(),
+                      //onPressed: () => _authenticate(),
                     ),
                   ),
                 ],
