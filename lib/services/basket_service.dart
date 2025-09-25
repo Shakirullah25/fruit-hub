@@ -86,4 +86,10 @@ class BasketService {
   static int get count => _basketItems.length;
 
   static bool get isEmpty => _basketItems.isEmpty;
+
+  static void persistOrder(String address, String phoneNumber) {
+    // In a real app, this would send data to backend
+    // For now, just clear the basket after "persisting"
+    clearBasket();
+  }
 }
