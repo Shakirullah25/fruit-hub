@@ -47,7 +47,10 @@ class OrderComplete extends StatelessWidget {
               SizedBox(height: 0.06.sh),
               PrimaryButton(
                 label: MyStrings.trackOrder,
-                onPressed: () => TrackOrder(),
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const TrackOrder()),
+                ),
                 width: 0.4.sw,
               ),
               SizedBox(height: 0.06.sh),
