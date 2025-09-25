@@ -17,15 +17,8 @@ class OrderComplete extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 0.3.sh,
-                child: Image.asset(
-                  MyStrings.orderComplete,
-                  // width: 0.3.sw,
-                  // height: 0.3.sh,
-                  //fit: BoxFit.contain,
-                ),
-              ),
+              Image.asset(MyStrings.orderComplete),
+              30.verticalSpace,
               Text(
                 MyStrings.congrats,
                 style: TextStyle(
