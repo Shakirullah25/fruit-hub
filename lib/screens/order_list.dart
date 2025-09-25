@@ -7,7 +7,7 @@ import 'package:fruit_salad_combo/constant/my_strings.dart';
 import 'package:fruit_salad_combo/services/basket_service.dart';
 import 'package:fruit_salad_combo/widgets/checkout_sheet.dart';
 import 'package:fruit_salad_combo/widgets/primary_button.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class OrderList extends StatefulWidget {
   final bool fromAddToBasket;
@@ -327,78 +327,3 @@ class _OrderListState extends State<OrderList> {
     );
   }
 }
-
-/*
-
-child: Text(
-                                  "Remove",
-                                  style: TextStyle(
-                                    fontSize: 16.spMin,
-                                    color: AppColors.primaryColor,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-
-return Dismissible(
-                      key: ValueKey(item[index]["fruitName"]),
-                      direction: DismissDirection.endToStart,
-                      background: Container(
-                        color: AppColors.red,
-                        alignment: Alignment.centerRight,
-                        padding: EdgeInsets.only(right: 20.w),
-                        child: Icon(
-                          Icons.delete,
-                          color: AppColors.scaffoldColor,
-                          size: 28.spMin,
-                        ),
-                      ),
-                      confirmDismiss: (direction) async {
-                        return await showCupertinoDialog<bool>(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return CupertinoAlertDialog(
-                                  title: Text(
-                                    'Delete Item',
-                                    style: TextStyle(
-                                      fontSize: 16.spMin,
-                                      color: AppColors.secondaryColor,
-                                    ),
-                                  ),
-                                  content: Text(
-                                    'Are you sure you want to delete this item?',
-                                    style: TextStyle(
-                                      fontSize: 15.spMin,
-                                      color: AppColors.secondaryColor,
-                                    ),
-                                  ),
-                                  actions: <CupertinoDialogAction>[
-                                    CupertinoDialogAction(
-                                      child: Text(
-                                        'Cancel',
-                                        style: TextStyle(
-                                          color: AppColors.secondaryColor,
-                                        ),
-                                      ),
-                                      onPressed: () {
-                                        Navigator.of(context).pop(false);
-                                      },
-                                    ),
-                                    CupertinoDialogAction(
-                                      isDestructiveAction: true,
-                                      onPressed: () {
-                                        Navigator.of(context).pop(true);
-                                      },
-                                      child: Text('Delete'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            ) ??
-                            false;
-                      },
-                      onDismissed: (direction) {
-                        _removeItem(index);
-                      },
-
-
-                                */

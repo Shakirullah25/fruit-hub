@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/constant/my_strings.dart';
+import 'package:fruit_salad_combo/screens/main_screen.dart';
 import 'package:fruit_salad_combo/screens/track_order.dart';
 import 'package:fruit_salad_combo/widgets/primary_button.dart';
 
 class OrderComplete extends StatelessWidget {
-  const OrderComplete({super.key});
+  final String userName;
+
+  const OrderComplete({super.key, required this.userName});
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +51,17 @@ class OrderComplete extends StatelessWidget {
               ),
               SizedBox(height: 0.06.sh),
               PrimaryButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          MainScreen(userName: userName),
+                    ),
+                  );
+                },
                 width: 0.6.sw,
-                label: MyStrings.continueShopping, // 👈 give this a diff label
+                label: MyStrings.continueShopping,
                 backgroundColor: AppColors.scaffoldColor,
                 foregroundColor: AppColors.primaryColor,
                 borderSide: BorderSide(color: AppColors.primaryColor),
