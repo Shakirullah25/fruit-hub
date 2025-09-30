@@ -538,7 +538,7 @@ class _MainScreenState extends State<MainScreen> {
                                           if (index == 0)
                                             color =
                                                 AppColors.quinoContainerColor;
-                                          else if (index == 1)
+                                           else if (index == 1)
                                             color = AppColors
                                                 .tropicalContainerColor;
                                           else if (index == 2)
