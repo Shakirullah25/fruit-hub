@@ -11,7 +11,8 @@ import 'package:fruit_salad_combo/widgets/primary_button.dart';
 
 class AddToBasketScreen extends StatefulWidget {
   final ComboDetails comboDetails;
-  const AddToBasketScreen({super.key, required this.comboDetails});
+  final String userName;
+  const AddToBasketScreen({super.key, required this.comboDetails, required this.userName});
 
   @override
   State<AddToBasketScreen> createState() => _AddToBasketScreenState();
@@ -109,7 +110,7 @@ class _AddToBasketScreenState extends State<AddToBasketScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const OrderList(fromAddToBasket: true),
+        builder: (context) => OrderList(fromAddToBasket: true, userName: widget.userName),
       ),
     );
   }
