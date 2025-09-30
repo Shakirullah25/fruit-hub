@@ -302,48 +302,21 @@ class _TrackOrderState extends State<TrackOrder> {
       child: Scaffold(
         backgroundColor: AppColors.scaffoldColor,
         appBar: AppBar(
-          toolbarHeight: 100,
+          toolbarHeight: 150,
           backgroundColor: AppColors.primaryColor,
           automaticallyImplyLeading: false,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              ElevatedButton.icon(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                  color: AppColors.secondaryColor,
-                  size: 18.spMin,
-                ),
-                label: Text(
-                  MyStrings.goBack,
-                  style: TextStyle(
-                    fontSize: 14.spMin,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.secondaryColor,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.scaffoldColor,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 6.h,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.r),
-                  ),
-                ),
-              ),
-              SizedBox(width: 0.1.sw),
-              Text(
-                MyStrings.deliveryStatus,
-                style: TextStyle(
-                  fontSize: 24.spMin,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.scaffoldColor,
-                ),
-              ),
-            ],
+
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: AppColors.scaffoldColor),
+            onPressed: () => Navigator.pop(context),
+          ),
+          title: Text(
+            MyStrings.deliveryStatus,
+            style: TextStyle(
+              fontSize: 22.spMin,
+              fontWeight: FontWeight.w500,
+              color: AppColors.scaffoldColor,
+            ),
           ),
         ),
         body: Padding(
