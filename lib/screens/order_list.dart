@@ -11,7 +11,8 @@ import 'package:fruit_salad_combo/widgets/primary_button.dart';
 
 class OrderList extends StatefulWidget {
   final bool fromAddToBasket;
-  const OrderList({super.key, this.fromAddToBasket = false});
+  final String userName;
+  const OrderList({super.key, this.fromAddToBasket = false, required this.userName});
 
   @override
   State<OrderList> createState() => _OrderListState();
@@ -316,7 +317,7 @@ class _OrderListState extends State<OrderList> {
                     PrimaryButton(
                       label: MyStrings.checkOut,
                       onPressed: () {
-                        showCheckoutSheet(context);
+                        showCheckoutSheet(context, widget.userName);
                       },
                       width: 0.50.sw,
                     ),
