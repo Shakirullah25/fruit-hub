@@ -1,15 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_salad_combo/constant/colors.dart';
 import 'package:fruit_salad_combo/constant/my_strings.dart';
-import 'package:fruit_salad_combo/screens/main_screen.dart';
 import 'package:fruit_salad_combo/screens/track_order.dart';
+import 'package:fruit_salad_combo/screens/main_screen.dart';
 import 'package:fruit_salad_combo/widgets/primary_button.dart';
 
-class OrderComplete extends StatelessWidget {
+class OrderComplete extends StatefulWidget {
   final String userName;
-
   const OrderComplete({super.key, required this.userName});
+
+  @override
+  State<OrderComplete> createState() => _OrderCompleteState();
+}
+
+class _OrderCompleteState extends State<OrderComplete> {
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _isLoading = true;
+  }
+
+  void _trackOrder() {
+    EasyLoading.show(status: "Loading...");
+
+    Future.delayed(Duration(seconds: 2), () {
+      EasyLoading.dismiss();
+      if (mounted) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => TrackOrder()),
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,25 +70,24 @@ class OrderComplete extends StatelessWidget {
               SizedBox(height: 0.06.sh),
               PrimaryButton(
                 label: MyStrings.trackOrder,
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const TrackOrder()),
-                ),
+                onPressed: () {
+                  _trackOrder();
+                },
                 width: 0.4.sw,
               ),
               SizedBox(height: 0.06.sh),
               PrimaryButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
+                  // Navigate back to the main screen and clear the previous stack
+                  Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                          MainScreen(userName: userName),
+                      builder: (_) => MainScreen(userName: widget.userName),
                     ),
+                    (route) => false,
                   );
                 },
                 width: 0.6.sw,
-                label: MyStrings.continueShopping,
+                label: MyStrings.continueShopping, // 👈 give this a diff label
                 backgroundColor: AppColors.scaffoldColor,
                 foregroundColor: AppColors.primaryColor,
                 borderSide: BorderSide(color: AppColors.primaryColor),
