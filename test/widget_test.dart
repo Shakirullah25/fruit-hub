@@ -25,7 +25,7 @@ void main() {
         designSize: Size(405, 844),
         builder: (context, child) {
           return MaterialApp(
-            home: AddToBasketScreen(comboDetails: comboDetails),
+            home: AddToBasketScreen(comboDetails: comboDetails, userName: 'TestUser'),
           );
         },
       ),
@@ -48,7 +48,7 @@ void main() {
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(
-      MaterialApp(home: AddToBasketScreen(comboDetails: comboDetails)),
+      MaterialApp(home: AddToBasketScreen(comboDetails: comboDetails, userName: 'TestUser')),
     );
 
     // Initial quantity
