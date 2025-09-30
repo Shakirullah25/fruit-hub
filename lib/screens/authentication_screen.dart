@@ -26,8 +26,6 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
     super.dispose();
   }
 
-  
-
   void _authenticate() {
     final String name = _firstNameController.text.trim();
 
@@ -38,31 +36,31 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
         _errorMessage = validationError;
       });
       return;
-    } 
-      // valid → proceed with loading and navigation
-      
-      EasyLoading.show(status: 'Loading...');
-
-      Future.delayed(const Duration(seconds: 3), () {
-        EasyLoading.dismiss();
-        if (mounted) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => MainScreen(userName: name)),
-          );
-        }
-      });
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => MainScreen(userName: name)),
-      // );
     }
+    // valid → proceed with loading and navigation
 
+    EasyLoading.show(status: 'Loading...');
+
+    Future.delayed(const Duration(seconds: 3), () {
+      EasyLoading.dismiss();
+      if (mounted) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MainScreen(userName: name)),
+        );
+      }
+    });
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => MainScreen(userName: name)),
+    // );
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         backgroundColor: AppColors.scaffoldColor,
         body: Column(
           children: [
