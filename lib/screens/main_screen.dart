@@ -114,7 +114,7 @@ class _MainScreenState extends State<MainScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => AddToBasketScreen(comboDetails: combo),
+        builder: (context) => AddToBasketScreen(comboDetails: combo, userName: widget.userName),
       ),
     );
   }
@@ -172,6 +172,7 @@ class _MainScreenState extends State<MainScreen> {
 
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         backgroundColor: AppColors.scaffoldColor,
         appBar: AppBar(
           backgroundColor: AppColors.scaffoldColor,
@@ -198,7 +199,7 @@ class _MainScreenState extends State<MainScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const OrderList(),
+                        builder: (context) => OrderList(userName: widget.userName),
                       ),
                     );
                   },
