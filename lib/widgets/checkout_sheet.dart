@@ -22,7 +22,8 @@ Widget _buildTextWidget({required String title}) {
 }
 
 class CheckoutSheet extends StatefulWidget {
-  const CheckoutSheet({super.key});
+  final String userName;
+  const CheckoutSheet({super.key, required this.userName});
 
   @override
   State<CheckoutSheet> createState() => _CheckoutSheetState();
@@ -45,8 +46,8 @@ class _CheckoutSheetState extends State<CheckoutSheet> {
     final address = addressController.text.trim();
     final phone = phoneController.text.trim();
 
-    final addressValidationError = validateAddress(address);
-    final phoneValidationError = validatePhoneNumber(phone);
+    final addressValidationError = validateAddressStrict(address);
+    final phoneValidationError = validatePhoneNumberStrict(phone);
 
     setState(() {
       addressError = addressValidationError;
@@ -70,7 +71,7 @@ class _CheckoutSheetState extends State<CheckoutSheet> {
       Navigator.pop(context); // Close the sheet
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const OrderComplete()),
+        MaterialPageRoute(builder: (context) => OrderComplete(userName: widget.userName)),
       );
     }
   }
@@ -136,7 +137,7 @@ class _CheckoutSheetState extends State<CheckoutSheet> {
                     SizedBox(width: 0.05.sw), // space between buttons
                     Expanded(
                       child: PrimaryButton(
-                        onPressed: () => showPayWithCardSheet(context),
+                        onPressed: () => showPayWithCardSheet(context, widget.userName),
                         label: MyStrings.payWithCard,
                         backgroundColor: AppColors.scaffoldColor,
                         foregroundColor: AppColors.primaryColor,
@@ -180,7 +181,7 @@ class _CheckoutSheetState extends State<CheckoutSheet> {
   }
 }
 
-void showCheckoutSheet(BuildContext context) {
+void showCheckoutSheet(BuildContext context, String userName) {
   showModalBottomSheet(
     context: context,
     backgroundColor: AppColors.scaffoldColor,
@@ -188,6 +189,6 @@ void showCheckoutSheet(BuildContext context) {
       borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
     ),
     isScrollControlled: true,
-    builder: (context) => const CheckoutSheet(),
+    builder: (context) => CheckoutSheet(userName: userName),
   );
 }
