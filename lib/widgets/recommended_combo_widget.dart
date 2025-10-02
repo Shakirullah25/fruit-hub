@@ -86,17 +86,17 @@ class RecommendedComboWidget extends StatelessWidget {
                 const Spacer(),
                 Padding(
                   padding: EdgeInsets.only(right: 8.0).r,
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: 24.w,
-                    height: 24.h,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.addContainerColor,
-                    ),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(12.r),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(12.r),
                       onTap: onTap,
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: 24.w,
+                      height: 24.h,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.addContainerColor,
+                      ),
                       child: Icon(
                         Icons.add,
                         size: 14.spMin,
