@@ -8,8 +8,8 @@ class MyStrings {
   static const String fruitBinBasket = "lib/assets/fruit-bin-basket.png";
   static const String navImg = "lib/assets/nav-img.png";
   static const String myBasketImg = "lib/assets/my-basket-img.png";
-  static const String searchIcon = "lib/assets/search-icon.png";
-  static const String sortIcon = "lib/assets/sort-icon.png";
+  //static const String searchIcon = "lib/assets/search-icon.png";
+  //static const String sortIcon = "lib/assets/sort-icon.png";
   static const String honeyLimeComboImg =
       "lib/assets/Honey-Lime-Peach-Fruit-Salad.png";
   static const String glowingBerryImg =
