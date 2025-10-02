@@ -30,51 +30,28 @@ Widget _buildSheetContent({
   required BuildContext context,
   required Widget child,
 }) {
-  return Stack(
-    clipBehavior: Clip.none,
-    children: [
-      Padding(
-        padding: EdgeInsets.only(top: 0.01.sh),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 0.03.sh),
-            child,
-          ],
-        ),
+  return Padding(
+    padding: EdgeInsets.only(top: 0.01.sh),
+    child: SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
-      Positioned(
-        top: -0.07.sh,
-        left: 0,
-        right: 0,
-        child: Center(
-          child: InkWell(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 48.w,
-              height: 48.w,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.scaffoldColor,
-              ),
-              child: Icon(
-                Icons.close,
-                color: AppColors.secondaryColor,
-                size: 24.spMin,
-                weight: 100,
-              ),
-            ),
-          ),
-        ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 0.03.sh),
+          child,
+        ],
       ),
-    ],
+    ),
   );
 }
 
 class PayWithCardSheet extends StatefulWidget {
   final String userName;
-  
+
   const PayWithCardSheet({super.key, required this.userName});
 
   @override
@@ -86,12 +63,12 @@ class _PayWithCardSheetState extends State<PayWithCardSheet> {
   final TextEditingController cardNumberController = TextEditingController();
   final TextEditingController expiryDateController = TextEditingController();
   final TextEditingController cvvController = TextEditingController();
-  
+
   String? cardHolderError;
   String? cardNumberError;
   String? expiryDateError;
   String? cvvError;
-  
+
   bool isProcessing = false;
 
   @override
@@ -106,7 +83,7 @@ class _PayWithCardSheetState extends State<PayWithCardSheet> {
   void _formatCardNumber(String value) {
     // Remove all non-digits
     String digitsOnly = value.replaceAll(RegExp(r'\D'), '');
-    
+
     // Add spaces every 4 digits
     String formatted = '';
     for (int i = 0; i < digitsOnly.length; i++) {
@@ -115,7 +92,7 @@ class _PayWithCardSheetState extends State<PayWithCardSheet> {
       }
       formatted += digitsOnly[i];
     }
-    
+
     // Update controller if different
     if (formatted != cardNumberController.text) {
       cardNumberController.value = TextEditingValue(
@@ -128,7 +105,7 @@ class _PayWithCardSheetState extends State<PayWithCardSheet> {
   void _formatExpiryDate(String value) {
     // Remove all non-digits
     String digitsOnly = value.replaceAll(RegExp(r'\D'), '');
-    
+
     // Add slash after 2 digits
     String formatted = '';
     for (int i = 0; i < digitsOnly.length && i < 4; i++) {
@@ -137,7 +114,7 @@ class _PayWithCardSheetState extends State<PayWithCardSheet> {
       }
       formatted += digitsOnly[i];
     }
-    
+
     // Update controller if different
     if (formatted != expiryDateController.text) {
       expiryDateController.value = TextEditingValue(
@@ -185,7 +162,10 @@ class _PayWithCardSheetState extends State<PayWithCardSheet> {
       await Future.delayed(const Duration(seconds: 3));
 
       // Simulate payment success (you can add actual payment logic here)
-      BasketService.persistOrder("Card Payment", cardNumber.replaceAll(RegExp(r'\d(?=\d{4})'), '*'));
+      BasketService.persistOrder(
+        "Card Payment",
+        cardNumber.replaceAll(RegExp(r'\d(?=\d{4})'), '*'),
+      );
 
       EasyLoading.dismiss();
 
@@ -234,7 +214,9 @@ class _PayWithCardSheetState extends State<PayWithCardSheet> {
                   controller: cardHolderController,
                   textCapitalization: TextCapitalization.words,
                   inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp(r"[a-zA-Z\s\-\.\']")),
+                    FilteringTextInputFormatter.allow(
+                      RegExp(r"[a-zA-Z\s\-\.\']"),
+                    ),
                     LengthLimitingTextInputFormatter(50),
                   ],
                   style: TextStyle(fontSize: 16.spMin),
@@ -247,7 +229,10 @@ class _PayWithCardSheetState extends State<PayWithCardSheet> {
                     ),
                     fillColor: AppColors.textFieldColor,
                     filled: true,
-                    contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 12.w),
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 0,
+                      horizontal: 12.w,
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: AppColors.textFieldColor),
                       borderRadius: BorderRadius.all(Radius.circular(10)).r,
@@ -278,7 +263,9 @@ class _PayWithCardSheetState extends State<PayWithCardSheet> {
                   keyboardType: TextInputType.number,
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
-                    LengthLimitingTextInputFormatter(19), // 16 digits + 3 spaces
+                    LengthLimitingTextInputFormatter(
+                      19,
+                    ), // 16 digits + 3 spaces
                   ],
                   style: TextStyle(fontSize: 16.spMin),
                   cursorColor: AppColors.primaryColor,
@@ -290,7 +277,10 @@ class _PayWithCardSheetState extends State<PayWithCardSheet> {
                     ),
                     fillColor: AppColors.textFieldColor,
                     filled: true,
-                    contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 12.w),
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 0,
+                      horizontal: 12.w,
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: AppColors.textFieldColor),
                       borderRadius: BorderRadius.all(Radius.circular(10)).r,
@@ -341,14 +331,25 @@ class _PayWithCardSheetState extends State<PayWithCardSheet> {
                               ),
                               fillColor: AppColors.textFieldColor,
                               filled: true,
-                              contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 12.w),
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 0,
+                                horizontal: 12.w,
+                              ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: AppColors.textFieldColor),
-                                borderRadius: BorderRadius.all(Radius.circular(10)).r,
+                                borderSide: BorderSide(
+                                  color: AppColors.textFieldColor,
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ).r,
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: AppColors.textFieldColor),
-                                borderRadius: BorderRadius.all(Radius.circular(10)).r,
+                                borderSide: BorderSide(
+                                  color: AppColors.textFieldColor,
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ).r,
                               ),
                               errorText: expiryDateError,
                               errorStyle: TextStyle(
@@ -394,14 +395,25 @@ class _PayWithCardSheetState extends State<PayWithCardSheet> {
                               ),
                               fillColor: AppColors.textFieldColor,
                               filled: true,
-                              contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 12.w),
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 0,
+                                horizontal: 12.w,
+                              ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: AppColors.textFieldColor),
-                                borderRadius: BorderRadius.all(Radius.circular(10)).r,
+                                borderSide: BorderSide(
+                                  color: AppColors.textFieldColor,
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ).r,
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: AppColors.textFieldColor),
-                                borderRadius: BorderRadius.all(Radius.circular(10)).r,
+                                borderSide: BorderSide(
+                                  color: AppColors.textFieldColor,
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ).r,
                               ),
                               errorText: cvvError,
                               errorStyle: TextStyle(
@@ -433,7 +445,7 @@ class _PayWithCardSheetState extends State<PayWithCardSheet> {
               height: 0.1.sh,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  color: isProcessing 
+                  color: isProcessing
                       ? AppColors.primaryColor.withValues(alpha: 0.6)
                       : AppColors.primaryColor,
                   borderRadius: BorderRadius.only(
@@ -483,6 +495,8 @@ class _PayWithCardSheetState extends State<PayWithCardSheet> {
 // Function to show the 'Pay with Card' sheet.
 void showPayWithCardSheet(BuildContext context, String userName) {
   showModalBottomSheet(
+    enableDrag: true,
+    showDragHandle: true,
     context: context,
     backgroundColor: AppColors.scaffoldColor,
     shape: RoundedRectangleBorder(
@@ -490,7 +504,7 @@ void showPayWithCardSheet(BuildContext context, String userName) {
     ),
     isScrollControlled: true,
     isDismissible: false, // Prevent dismissing during processing
-    enableDrag: false, // Prevent dragging during processing
+    //enableDrag: false, // Prevent dragging during processing
     builder: (context) => PayWithCardSheet(userName: userName),
   );
 }
