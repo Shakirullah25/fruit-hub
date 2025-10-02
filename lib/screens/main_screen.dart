@@ -114,7 +114,8 @@ class _MainScreenState extends State<MainScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => AddToBasketScreen(comboDetails: combo, userName: widget.userName),
+        builder: (context) =>
+            AddToBasketScreen(comboDetails: combo, userName: widget.userName),
       ),
     );
   }
@@ -189,6 +190,7 @@ class _MainScreenState extends State<MainScreen> {
               // size: 0.06.sw,
               color: AppColors.primaryColor,
             ),
+
           ),
           actions: [
             ValueListenableBuilder<int>(
@@ -199,23 +201,22 @@ class _MainScreenState extends State<MainScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => OrderList(userName: widget.userName),
+                        builder: (context) =>
+                            OrderList(userName: widget.userName),
                       ),
                     );
                   },
                   icon: badges.Badge(
                     showBadge: true,
                     position: badges.BadgePosition.topEnd(top: 0, end: 0),
-                    badgeStyle: badges.BadgeStyle(
-                      //padding: EdgeInsets.all(6),
-                    ),
+                    badgeStyle: badges.BadgeStyle(padding: EdgeInsets.all(4.w)),
                     // If there are items, show count. If not, show a small dot
                     badgeContent: count > 0
                         ? Text(
                             count.toString(),
                             style: TextStyle(
                               color: AppColors.scaffoldColor,
-                              fontSize: 12,
+                              fontSize: 10.spMin,
                               fontWeight: FontWeight.bold,
                             ),
                           )
@@ -234,6 +235,10 @@ class _MainScreenState extends State<MainScreen> {
         body: DefaultTabController(
           length: 4,
           child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -271,7 +276,9 @@ class _MainScreenState extends State<MainScreen> {
                         child: PrimaryTextField(
                           hintText: MyStrings.hintTxt,
                           icon: Icon(
-                            Icons.search,
+                            Icons.search_rounded,
+                            weight: 1,
+                            size: 20.spMin,
                             color: AppColors.hintTxtColor,
                           ),
                           textEditingController: _searchController,
@@ -477,7 +484,8 @@ class _MainScreenState extends State<MainScreen> {
                     TabBar(
                       indicator: UnderlineTabIndicator(
                         borderSide: BorderSide(
-                          width: 3.0,
+                          style: BorderStyle.solid,
+                          width: 2.0,
                           color: AppColors.primaryColor,
                         ),
                         insets: EdgeInsets.symmetric(
@@ -538,7 +546,7 @@ class _MainScreenState extends State<MainScreen> {
                                           if (index == 0)
                                             color =
                                                 AppColors.quinoContainerColor;
-                                           else if (index == 1)
+                                          else if (index == 1)
                                             color = AppColors
                                                 .tropicalContainerColor;
                                           else if (index == 2)

@@ -62,49 +62,64 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: AppColors.scaffoldColor,
-        body: Column(
-          children: [
-            FruitBasketContainer(
-              basketImgPath: MyStrings.basketImgPath,
-              shadowImgPath: MyStrings.shadowImgPath,
+        body: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
             ),
-            SizedBox(height: 0.05.sh),
-            Padding(
-              padding: EdgeInsets.only(left: 0.08.sw),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight:
+                    MediaQuery.of(context).size.height -
+                    MediaQuery.of(context).padding.top,
+              ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    MyStrings.firstName,
-                    style: TextStyle(
-                      fontSize: 20.spMin,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.secondaryColor,
-                    ),
-                  ),
-                  SizedBox(height: 0.02.sh),
-                  Padding(
-                    padding: EdgeInsets.only(right: 0.08.sw),
-                    child: PrimaryTextField(
-                      hintText: MyStrings.authHintTxt,
-                      textEditingController: _firstNameController,
-                      keyboardType: TextInputType.name,
-                      errorText: _errorMessage,
-                    ),
+                  FruitBasketContainer(
+                    basketImgPath: MyStrings.basketImgPath,
+                    shadowImgPath: MyStrings.shadowImgPath,
                   ),
                   SizedBox(height: 0.05.sh),
                   Padding(
-                    padding: EdgeInsets.only(right: 0.08.sw),
-                    child: PrimaryButton(
-                      label: MyStrings.authButtonTxt,
-                      onPressed: () => _authenticate(),
-                      //onPressed: () => _authenticate(),
+                    padding: EdgeInsets.only(left: 0.08.sw),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          MyStrings.firstName,
+                          style: TextStyle(
+                            fontSize: 20.spMin,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.secondaryColor,
+                          ),
+                        ),
+                        SizedBox(height: 0.02.sh),
+                        Padding(
+                          padding: EdgeInsets.only(right: 0.08.sw),
+                          child: PrimaryTextField(
+                            hintText: MyStrings.authHintTxt,
+                            textEditingController: _firstNameController,
+                            keyboardType: TextInputType.name,
+                            errorText: _errorMessage,
+                          ),
+                        ),
+                        SizedBox(height: 0.05.sh),
+                        Padding(
+                          padding: EdgeInsets.only(right: 0.08.sw),
+                          child: PrimaryButton(
+                            label: MyStrings.authButtonTxt,
+                            onPressed: () => _authenticate(),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );
