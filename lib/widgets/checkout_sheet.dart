@@ -71,118 +71,96 @@ class _CheckoutSheetState extends State<CheckoutSheet> {
       Navigator.pop(context); // Close the sheet
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => OrderComplete(userName: widget.userName)),
+        MaterialPageRoute(
+          builder: (context) => OrderComplete(userName: widget.userName),
+        ),
       );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        SizedBox(
-          width: double.infinity,
-          child: Padding(
-            padding: EdgeInsets.only(
-              top: 0.04.sh,
-              left: 0.06.sw,
-              right: 0.06.sw,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildTextWidget(title: MyStrings.deliveryAddress),
-                15.verticalSpace,
-                PrimaryTextField(
-                  textEditingController: addressController,
-                  hintText: MyStrings.hintDeliveryAddress,
-                  errorText: addressError,
-                  onChanged: (value) {
-                    if (addressError != null) {
-                      setState(() {
-                        addressError = null;
-                      });
-                    }
-                  },
-                ),
-                15.verticalSpace,
-                _buildTextWidget(title: MyStrings.no2Call),
-                15.verticalSpace,
-                PrimaryTextField(
-                  textEditingController: phoneController,
-                  hintText: MyStrings.numberHint,
-                  errorText: phoneError,
-                  onChanged: (value) {
-                    if (phoneError != null) {
-                      setState(() {
-                        phoneError = null;
-                      });
-                    }
-                  },
-                ),
-                25.verticalSpace,
-                Row(
-                  children: [
-                    Expanded(
-                      child: PrimaryButton(
-                        label: MyStrings.payOnDelivery,
-                        backgroundColor: AppColors.scaffoldColor,
-                        foregroundColor: AppColors.primaryColor,
-                        onPressed: _handlePayOnDelivery,
-                        borderSide: BorderSide(color: AppColors.primaryColor),
-                      ),
-                    ),
-                    SizedBox(width: 0.05.sw), // space between buttons
-                    Expanded(
-                      child: PrimaryButton(
-                        onPressed: () => showPayWithCardSheet(context, widget.userName),
-                        label: MyStrings.payWithCard,
-                        backgroundColor: AppColors.scaffoldColor,
-                        foregroundColor: AppColors.primaryColor,
-                        borderSide: BorderSide(color: AppColors.primaryColor),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 0.04.sw), // space between buttons
-              ],
-            ),
+    return SizedBox(
+      width: double.infinity,
+      child: Padding(
+        padding: EdgeInsets.only(top: 0.04.sh, left: 0.06.sw, right: 0.06.sw),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-        ),
-        // -----> Top Close Icon in a Stack Widget <-----
-        Positioned(
-          top: -0.07.sh, // negative to make it float outside sheet
-          left: 0,
-          right: 0,
-          child: Center(
-            child: InkWell(
-              onTap: () => Navigator.pop(context),
-              child: Container(
-                width: 48.w,
-                height: 48.w,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.scaffoldColor,
-                ),
-                child: Icon(
-                  Icons.close,
-                  color: AppColors.secondaryColor,
-                  size: 24.spMin,
-                  weight: 100,
-                ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildTextWidget(title: MyStrings.deliveryAddress),
+              15.verticalSpace,
+              PrimaryTextField(
+                textEditingController: addressController,
+                hintText: MyStrings.hintDeliveryAddress,
+                errorText: addressError,
+                onChanged: (value) {
+                  if (addressError != null) {
+                    setState(() {
+                      addressError = null;
+                    });
+                  }
+                },
               ),
-            ),
+              15.verticalSpace,
+              _buildTextWidget(title: MyStrings.no2Call),
+              15.verticalSpace,
+              PrimaryTextField(
+                textEditingController: phoneController,
+                hintText: MyStrings.numberHint,
+                errorText: phoneError,
+                onChanged: (value) {
+                  if (phoneError != null) {
+                    setState(() {
+                      phoneError = null;
+                    });
+                  }
+                },
+              ),
+              25.verticalSpace,
+              Row(
+                children: [
+                  Expanded(
+                    child: PrimaryButton(
+                      label: MyStrings.payOnDelivery,
+                      backgroundColor: AppColors.scaffoldColor,
+                      foregroundColor: AppColors.primaryColor,
+                      onPressed: _handlePayOnDelivery,
+                      borderSide: BorderSide(color: AppColors.primaryColor),
+                    ),
+                  ),
+                  SizedBox(width: 0.05.sw), // space between buttons
+                  Expanded(
+                    child: PrimaryButton(
+                      onPressed: () =>
+                          showPayWithCardSheet(context, widget.userName),
+                      label: MyStrings.payWithCard,
+                      backgroundColor: AppColors.scaffoldColor,
+                      foregroundColor: AppColors.primaryColor,
+                      borderSide: BorderSide(color: AppColors.primaryColor),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 0.04.sw), // space between buttons
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 }
 
 void showCheckoutSheet(BuildContext context, String userName) {
   showModalBottomSheet(
+    enableDrag: true,
+    showDragHandle: true,
+    //sheetAnimationStyle: AnimationStyle(curve: Curves.easeIn),
     context: context,
     backgroundColor: AppColors.scaffoldColor,
     shape: RoundedRectangleBorder(
